@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordCounter"
         mc:Ignorable="d"
-        Title="Infa" Height="450" Width="800">
-    <Grid Margin="0,0,0,0" MinWidth="800" MinHeight="600" ShowGridLines="True">
+        Title="Infa" Height="450" Width="1000">
+    <Grid Margin="0,0,0,0" MinWidth="1000" MinHeight="900" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition  Height="60"></RowDefinition>
-            <RowDefinition  Height="*"></RowDefinition>
+            <RowDefinition  Height="*" MinHeight="900"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <ListBox Name="List" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" Background="#FFBF8A8A"/>
-        <WebBrowser Name="webBrowser1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto" Height="Auto" MinWidth="50" MinHeight="50"/>
+        <WebBrowser Name="webBrowser1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="Auto" MinWidth="50" MinHeight="50"/>
 
     </Grid>
 </Window>

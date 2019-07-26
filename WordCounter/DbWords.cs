@@ -66,20 +66,20 @@ namespace WordCounter {
 			if (fname.Length == 0)
 				fname = defFName;
 
-			string dbfname;
-			if (!File.Exists(fname)) {
-				dbfname = @"..\..\" + fname;
+			string dbfname = fname;
+			if (!File.Exists(dbfname)) {
+				dbfname = @"..\" + dbfname;
 				if (!File.Exists(dbfname)) {
 					dbfname = @"..\" + dbfname;
 					if (!File.Exists(dbfname)) {
-						Console.WriteLine("No DB file '" + fname + "' !");
-						return;
+						dbfname = @"..\" + dbfname;
+						if (!File.Exists(dbfname)) {
+							Console.WriteLine("No DB file '" + fname + "' !");
+							return;
+						}
 					}
 				}
-			} else {
-				dbfname = fname;
 			}
-
 			db = new Dictionary<string, int>();
 			using (StreamReader sr = new StreamReader(dbfname, Encoding.Default)) {
 				string line;

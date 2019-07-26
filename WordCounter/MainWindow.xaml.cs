@@ -6,6 +6,9 @@ using System.Media;
 using System.Windows.Controls;
 using System;
 using System.Windows.Media;
+//using System.Windows.Shapes;
+//using System.Windows.Forms;
+//using System.Drawing;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -191,8 +194,23 @@ namespace WordCounter {
 		private void DtOut_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
 			Infa infa = new Infa();
 			// webBrowser1.Url=new Uri("http://google.com");
+
+			System.Drawing.Rectangle rmain = new System.Drawing.Rectangle((int)this.Left, (int)this.Top, (int)this.Width, (int)this.Height);
+			System.Windows.Forms.Screen myScreen = System.Windows.Forms.Screen.FromRectangle(rmain);
+			System.Drawing.Rectangle area = myScreen.WorkingArea;
+
+			infa.Top = area.Top + area.Height * 0.1;
+			infa.Left = area.Left + area.Width * 0.1;
+			infa.Height = area.Height * 0.8;
+			infa.Width = area.Width * 0.8;
+			//Console.WriteLine("This Left" + (int)this.Left + " Top" + (int)this.Top + " Width" + (int)this.Width + " Height" + (int)this.Height);
+			//Console.WriteLine("area Left" + (int)area.Left + " Top" + (int)area.Top + " Width" + (int)area.Width + " Height" + (int)area.Height);
+			//Console.WriteLine("Infa Left" + (int)infa.Left + " Top" + (int)infa.Top + " Width" + (int)infa.Width + " Height" + (int)infa.Height);
+
 			infa.Show();
+			//infa.WindowState = WindowState.Maximized;
 			infa.Owner = this;
+
 			string words = "";
 			for (int i = 0; i < dtOut.SelectedItems.Count; i++) {
 				OutGridData o = (OutGridData)dtOut.SelectedItems[i];

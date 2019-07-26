@@ -13,18 +13,19 @@ namespace WordCounter {
 			Load(fname);
 		} // /////////////////////////////////////////////////////////////////////////////
 		private void Load(string fname) {
-			string dbfname;
-			if (!File.Exists(fname)) {
-				dbfname = @"..\..\" + fname;
+			string dbfname = fname;
+			if (!File.Exists(dbfname)) {
+				dbfname = @"..\" + dbfname;
 				if (!File.Exists(dbfname)) {
 					dbfname = @"..\" + dbfname;
 					if (!File.Exists(dbfname)) {
-						Console.WriteLine("No IrregularVerbs file '" + fname + "' !");
-						return;
+						dbfname = @"..\" + dbfname;
+						if (!File.Exists(dbfname)) {
+							Console.WriteLine("No IrregularVerbs file '" + fname + "' !");
+							return;
+						}
 					}
 				}
-			} else {
-				dbfname = fname;
 			}
 			db = new Dictionary<string, string>();
 			using (StreamReader sr = new StreamReader(dbfname, Encoding.Default)) {
