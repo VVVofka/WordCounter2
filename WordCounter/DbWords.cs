@@ -60,7 +60,7 @@ namespace WordCounter {
 		} // ////////////////////////////////////////////////////////////////////////////////
 	} // *******************************************************************************
 	public class DbWords {
-		public string defFName = "DB.txt";
+		public string defFName = "DBWords.txt";
 		public Dictionary<string, int> db;
 		public void Load(string fname = "") {
 			if (fname.Length == 0)

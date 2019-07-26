@@ -195,18 +195,7 @@ namespace WordCounter {
 			Infa infa = new Infa();
 			// webBrowser1.Url=new Uri("http://google.com");
 
-			System.Drawing.Rectangle rmain = new System.Drawing.Rectangle((int)this.Left, (int)this.Top, (int)this.Width, (int)this.Height);
-			System.Windows.Forms.Screen myScreen = System.Windows.Forms.Screen.FromRectangle(rmain);
-			System.Drawing.Rectangle area = myScreen.WorkingArea;
-
-			infa.Top = area.Top + area.Height * 0.1;
-			infa.Left = area.Left + area.Width * 0.1;
-			infa.Height = area.Height * 0.8;
-			infa.Width = area.Width * 0.8;
-			//Console.WriteLine("This Left" + (int)this.Left + " Top" + (int)this.Top + " Width" + (int)this.Width + " Height" + (int)this.Height);
-			//Console.WriteLine("area Left" + (int)area.Left + " Top" + (int)area.Top + " Width" + (int)area.Width + " Height" + (int)area.Height);
-			//Console.WriteLine("Infa Left" + (int)infa.Left + " Top" + (int)infa.Top + " Width" + (int)infa.Width + " Height" + (int)infa.Height);
-
+			VVVindowSize.ReSize(infa, 0.6, 0.8, 0.33, 0.5, this);
 			infa.Show();
 			//infa.WindowState = WindowState.Maximized;
 			infa.Owner = this;
@@ -219,7 +208,10 @@ namespace WordCounter {
 			string url = "https://translate.yandex.ru/?lang=en-ru&text=" + words;
 			url.Replace(" ", "%20");
 			infa.Browse(url);
-		}
+		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);
+		} // ///////////////////////////////////////////////////////////////////////////////////////////////
 	} // *************************************************************************************
 	  // ??????????????????????????????????
 } // -------------------------------------------------------------------------------------------
