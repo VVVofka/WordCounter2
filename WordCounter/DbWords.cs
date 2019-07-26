@@ -65,10 +65,23 @@ namespace WordCounter {
 		public void Load(string fname = "") {
 			if (fname.Length == 0)
 				fname = defFName;
-			if (!File.Exists(fname))
-				return;
+
+			string dbfname;
+			if (!File.Exists(fname)) {
+				dbfname = @"..\..\" + fname;
+				if (!File.Exists(dbfname)) {
+					dbfname = @"..\" + dbfname;
+					if (!File.Exists(dbfname)) {
+						Console.WriteLine("No DB file '" + fname + "' !");
+						return;
+					}
+				}
+			} else {
+				dbfname = fname;
+			}
+
 			db = new Dictionary<string, int>();
-			using (StreamReader sr = new StreamReader(fname, Encoding.Default)) {
+			using (StreamReader sr = new StreamReader(dbfname, Encoding.Default)) {
 				string line;
 				while ((line = sr.ReadLine()) != null) {
 					string sval = line.Substring(0, 1);
