@@ -6,9 +6,7 @@ using System.Media;
 using System.Windows.Controls;
 using System;
 using System.Windows.Media;
-//using System.Windows.Shapes;
-//using System.Windows.Forms;
-//using System.Drawing;
+using System.Collections.Generic;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -21,6 +19,7 @@ namespace WordCounter {
 		private OptionsReg options; // save controls state
 		TextProc tp = new TextProc();
 		DbWords db = new DbWords();
+		string sReadFiles = "";
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
 			InitializeComponent();
@@ -51,11 +50,10 @@ namespace WordCounter {
 		} /////////////////////////////////////////////////////////////////////////////////
 		private void BtLoad_Click(object sender, RoutedEventArgs e) {
 			dtOut.ItemsSource = null;
-			string s = "";
 			for (int i = 0; i < lstFileNames.Items.Count; i++) {
 				string fname = lstFileNames.Items[i].ToString();
 				if (File.Exists(fname))
-					s += File.ReadAllText(fname) + " ";
+					sReadFiles += File.ReadAllText(fname) + " ";
 				else {
 					MessageBox.Show($"IO error. File\n`" + fname + $"`\n not exist!");
 					return;
@@ -63,7 +61,7 @@ namespace WordCounter {
 			}
 			tp = new TextProc();
 			tp.irrVerb = (bool)chz_IrVerb.IsChecked;
-			tp.Run(s);
+			tp.Run(sReadFiles);
 			if (chzUn.IsChecked == true) {
 				tp.DelStart("un");
 				tp.DelStart("dis");
@@ -192,22 +190,23 @@ namespace WordCounter {
 			dtOut.ItemsSource = tp.grdata;
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+			if (dtOut.SelectedItems.Count == 0 || sReadFiles.Length == 0) return;
 			Infa infa = new Infa();
-			// webBrowser1.Url=new Uri("http://google.com");
 
 			VVVindowSize.ReSize(infa, 0.6, 0.8, 0.33, 0.5, this);
-			infa.Show();
 			//infa.WindowState = WindowState.Maximized;
 			infa.Owner = this;
+			infa.Show();
 
-			string words = "";
-			for (int i = 0; i < dtOut.SelectedItems.Count; i++) {
-				OutGridData o = (OutGridData)dtOut.SelectedItems[i];
-				words += o.Word + " ";
-			}
-			string url = "https://translate.yandex.ru/?lang=en-ru&text=" + words;
+			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
+			string url = "https://translate.yandex.ru/?lang=en-ru&text=" + o.Word;
 			url.Replace(" ", "%20");
 			infa.Browse(url);
+
+			ItemDists idsts = tp.lst[o.Word];
+			foreach (int pos in idsts.Positions) {
+				double k = pos / sReadFiles.Length;
+			}
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);

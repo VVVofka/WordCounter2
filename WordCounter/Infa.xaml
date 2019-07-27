@@ -17,6 +17,7 @@
 
         <ListBox Name="List" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" Background="#FFBF8A8A"/>
         <WebBrowser Name="webBrowser1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="Auto" MinWidth="50" MinHeight="50"/>
+        <Rectangle x:Name="rcPositions" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="19" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="454"/>
 
     </Grid>
 </Window>
