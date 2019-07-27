@@ -207,6 +207,7 @@ namespace WordCounter {
 			foreach (int pos in idsts.Positions) {
 				double k = pos / sReadFiles.Length;
 			}
+			
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);

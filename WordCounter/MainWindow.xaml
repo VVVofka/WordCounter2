@@ -22,6 +22,7 @@
 
         <TextBox x:Name="txFileName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,5,5,0" TextWrapping="Wrap" Text="Select file ..." VerticalAlignment="Top"/>
         <ComboBox x:Name="lstFileNames" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,0,17,5" VerticalAlignment="Bottom"/>
+        <Rectangle x:Name="rcLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
         <Button x:Name="knSelectFile" Grid.Row="0" Grid.Column="2" Content="..." HorizontalAlignment="Right" Height="21"  VerticalAlignment="Bottom" Width="18" Click="KnSelectFile_Click" Margin="0,0,0,5"/>
 
         <Button x:Name="btLoad" Grid.Row="1" Content="Load" HorizontalAlignment="Left" Height="21" Margin="5,5,0,0" VerticalAlignment="Top" Width="42" Click="BtLoad_Click"/>
