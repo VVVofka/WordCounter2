@@ -8,6 +8,7 @@ using System;
 using System.Windows.Media;
 using System.Collections.Generic;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -22,7 +23,7 @@ namespace WordCounter {
 		DbWords db = new DbWords();
 		string sReadFiles = "";
 		Line lhor = new Line();
-
+		ObservableCollection<Line> poslines = new ObservableCollection<Line>();
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
 			InitializeComponent();
@@ -213,11 +214,6 @@ namespace WordCounter {
 			url.Replace(" ", "%20");
 			infa.Browse(url);
 
-			ItemDists idsts = tp.lst[o.Word];
-			foreach (int pos in idsts.Positions) {
-				double k = rctLine.Width * pos / sReadFiles.Length;
-			}
-
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);
@@ -227,6 +223,32 @@ namespace WordCounter {
 			lhor.X2 = dtOut.Margin.Left + dtOut.ActualWidth;
 			lhor.Y1 = dtOut.Margin.Top / 2;
 			lhor.Y2 = lhor.Y1;
+
+			if (dtOut.SelectedItems.Count == 0) return;
+			
+			//poslines.Clear();
+			int n = poslines.Count;
+			for (int i = n - 1; i >= 0; i--) {
+				poslines.RemoveAt(i);
+			}
+
+			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
+			ItemDists idsts = tp.lst[o.Word];
+			foreach (int pos in idsts.Positions) {
+				Line ln = new Line();
+				ln.X1 = ln.X2 = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
+				ln.Y1 = 1;
+				ln.Y2 = dtOut.Margin.Top - 1;
+				poslines.Add(ln);
+
+				grid1.Children.Add(ln);
+				Grid.SetRow(ln, 1);
+				Grid.SetColumn(ln, 2);
+				ln.VerticalAlignment = VerticalAlignment.Top;
+				ln.Stroke = Brushes.Blue;
+				ln.StrokeThickness = 3;
+			}
+
 		} // ///////////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_SizeChanged(object sender, SizeChangedEventArgs e) {
 			DtOut_SelectionChanged(sender, null);
