@@ -9,20 +9,20 @@
         Title="Words for studying" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
     </Window.Resources>
-    <Grid  Background="Lavender">
+    <Grid x:Name="grid1"  Background="Lavender">
         <Grid.RowDefinitions>
-            <RowDefinition  Height="60"></RowDefinition>
-            <RowDefinition  Height="*"></RowDefinition>
+            <RowDefinition x:Name="row1"  Height="60"></RowDefinition>
+            <RowDefinition x:Name="row2"  Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="70" MinWidth="60" Width="70*"></ColumnDefinition>
-            <ColumnDefinition MaxWidth="120" MinWidth="120" Width="120*"></ColumnDefinition>
-            <ColumnDefinition Width="301*"></ColumnDefinition>
+            <ColumnDefinition x:Name="column1" MaxWidth="70" MinWidth="60" Width="70*"></ColumnDefinition>
+            <ColumnDefinition x:Name="column2" MaxWidth="120" MinWidth="120" Width="120*"></ColumnDefinition>
+            <ColumnDefinition x:Name="column3" Width="301*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="txFileName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,5,5,0" TextWrapping="Wrap" Text="Select file ..." VerticalAlignment="Top"/>
         <ComboBox x:Name="lstFileNames" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,0,17,5" VerticalAlignment="Bottom"/>
-        <Rectangle x:Name="rcLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Rectangle x:Name="rctLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
         <Button x:Name="knSelectFile" Grid.Row="0" Grid.Column="2" Content="..." HorizontalAlignment="Right" Height="21"  VerticalAlignment="Bottom" Width="18" Click="KnSelectFile_Click" Margin="0,0,0,5"/>
 
         <Button x:Name="btLoad" Grid.Row="1" Content="Load" HorizontalAlignment="Left" Height="21" Margin="5,5,0,0" VerticalAlignment="Top" Width="42" Click="BtLoad_Click"/>
@@ -38,7 +38,7 @@
         <CheckBox x:Name="chz_y" Grid.Row="1" Content="...y" HorizontalAlignment="Left" Height="19" Margin="5,198,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
         <CheckBox x:Name="chz_less" Grid.Row="1" Content="...less" HorizontalAlignment="Left" Height="19" Margin="5,218,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
         <CheckBox x:Name="chz_IrVerb" Grid.Row="1" Content="Ir.Verbs" HorizontalAlignment="Left" Height="19" Margin="5,237,0,0" VerticalAlignment="Top" Width="65" IsChecked="True"/>
-        <DataGrid x:Name="dtOut" Grid.Row="1" Margin="5" BeginningEdit="DtOut_BeginningEdit" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" />
+        <DataGrid x:Name="dtOut" Grid.Row="1" Margin="15" BeginningEdit="DtOut_BeginningEdit" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" SelectionChanged="DtOut_SelectionChanged" SizeChanged="DtOut_SizeChanged" />
         <CheckBox x:Name="chUnknown" Grid.Row="1" Content="Unknown words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,144" VerticalAlignment="Bottom" Width="110" Click="ChUnknown_Click" IsThreeState="True" Grid.Column="1"/>
         <Button x:Name="btSetKnown" Grid.Row="1" Content="Set known" HorizontalAlignment="Right" Height="28" Margin="0,0,0,84" VerticalAlignment="Bottom" Width="110" Click="BtSetKnown_Click" Grid.ColumnSpan="2" />
         <Button x:Name="btSetUnknown" Grid.Row="1" Content="Set unknown" HorizontalAlignment="Right" Margin="0,0,0,51" VerticalAlignment="Bottom" Width="110" Click="BtSetUnknown_Click" Height="28" Grid.ColumnSpan="2"/>

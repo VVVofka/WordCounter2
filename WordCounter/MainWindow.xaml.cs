@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System;
 using System.Windows.Media;
 using System.Collections.Generic;
+using System.Windows.Shapes;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -20,6 +21,8 @@ namespace WordCounter {
 		TextProc tp = new TextProc();
 		DbWords db = new DbWords();
 		string sReadFiles = "";
+		Line lhor = new Line();
+
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
 			InitializeComponent();
@@ -30,6 +33,13 @@ namespace WordCounter {
 			Control[] ctrls = new Control[] { chKnown, chUnknown, lstFileNames, txFileName, chzUn, chz_s, chz_ed, chz_ing, chz_en, chz_est, chz_ly, chz_er, chz_y, chz_less, chz_IrVerb };
 			options = new OptionsReg(this, ctrls);
 			db.Load();
+
+			grid1.Children.Add(lhor);
+			Grid.SetRow(lhor, 1);
+			Grid.SetColumn(lhor, 2);
+			lhor.VerticalAlignment = VerticalAlignment.Top;
+			lhor.Stroke = Brushes.Red;
+			lhor.StrokeThickness = 3;
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void KnSelectFile_Click(object sender, RoutedEventArgs e) {
 			if (dlg.ShowDialog() == true) {
@@ -205,13 +215,22 @@ namespace WordCounter {
 
 			ItemDists idsts = tp.lst[o.Word];
 			foreach (int pos in idsts.Positions) {
-				double k = pos / sReadFiles.Length;
+				double k = rctLine.Width * pos / sReadFiles.Length;
 			}
-			
+
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);
 		} // ///////////////////////////////////////////////////////////////////////////////////////////////
+		private void DtOut_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+			lhor.X1 = dtOut.Margin.Left;
+			lhor.X2 = dtOut.Margin.Left + dtOut.ActualWidth;
+			lhor.Y1 = dtOut.Margin.Top / 2;
+			lhor.Y2 = lhor.Y1;
+		} // ///////////////////////////////////////////////////////////////////////////////////////
+		private void DtOut_SizeChanged(object sender, SizeChangedEventArgs e) {
+			DtOut_SelectionChanged(sender, null);
+		} // /////////////////////////////////////////////////////////////////////////////////////
 	} // *************************************************************************************
 	  // ??????????????????????????????????
 } // -------------------------------------------------------------------------------------------
