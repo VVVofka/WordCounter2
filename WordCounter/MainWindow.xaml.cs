@@ -226,11 +226,7 @@ namespace WordCounter {
 			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
 			ItemDists idsts = tp.lst[o.Word];
 			foreach (int pos in idsts.Positions) {
-/*				Line ln = new Line();
-				ln.X1 = ln.X2 = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
-				ln.Y1 = 1;
-				ln.Y2 = dtOut.Margin.Top - 1;
-	*/			Point p = new Point();
+				Point p = new Point();
 				p.X = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
 				p.Y = -6;
 				bind.PosLines.Add(p);
@@ -245,6 +241,4 @@ namespace WordCounter {
 		} // /////////////////////////////////////////////////////////////////////////////////////
 	} // *************************************************************************************
 } // -------------------------------------------------------------------------------------------
-
-//         <Rectangle x:Name="rctLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
 
