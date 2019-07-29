@@ -226,25 +226,25 @@ namespace WordCounter {
 			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
 			ItemDists idsts = tp.lst[o.Word];
 			foreach (int pos in idsts.Positions) {
-				Line ln = new Line();
+/*				Line ln = new Line();
 				ln.X1 = ln.X2 = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
 				ln.Y1 = 1;
 				ln.Y2 = dtOut.Margin.Top - 1;
-				Point p = new Point();
+	*/			Point p = new Point();
 				p.X = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
-				p.Y = 3;
+				p.Y = -6;
 				bind.PosLines.Add(p);
 			}
 		} // ///////////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_SizeChanged(object sender, SizeChangedEventArgs e) {
-			lhor.X1 = dtOut.Margin.Left;
-			lhor.X2 = dtOut.Margin.Left + dtOut.ActualWidth;
-			lhor.Y1 = dtOut.Margin.Top / 2;
-			lhor.Y2 = lhor.Y1;
+			lhor.X1 = lstFileNames.Margin.Left;
+			lhor.X2 = lstFileNames.Margin.Left + lstFileNames.ActualWidth + knSelectFile.ActualWidth - 2;
+			//lhor.Y1 = lstFileNames.ActualHeight + 29;
+			//lhor.Y2 = lhor.Y1;
 			DtOut_SelectionChanged(sender, null);
 		} // /////////////////////////////////////////////////////////////////////////////////////
 	} // *************************************************************************************
-	  // ??????????????????????????????????
 } // -------------------------------------------------------------------------------------------
 
+//         <Rectangle x:Name="rctLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
 

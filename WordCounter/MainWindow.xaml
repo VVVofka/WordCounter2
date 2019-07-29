@@ -11,8 +11,9 @@
     </Window.Resources>
     <Grid x:Name="grid1"  Background="Lavender">
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="row1"  Height="60"></RowDefinition>
-            <RowDefinition x:Name="row2"  Height="*"></RowDefinition>
+            <RowDefinition x:Name="row1"  Height="30"></RowDefinition>
+            <RowDefinition x:Name="row2"  Height="30"></RowDefinition>
+            <RowDefinition x:Name="row3"  Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="column1" MaxWidth="70" MinWidth="60" Width="70*"></ColumnDefinition>
@@ -21,32 +22,10 @@
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="txFileName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,5,5,0" TextWrapping="Wrap" Text="Select file ..." VerticalAlignment="Top"/>
-        <ComboBox x:Name="lstFileNames" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Margin="5,0,17,5" VerticalAlignment="Bottom"/>
-        <Rectangle x:Name="rctLine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="5" Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Left" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <Button x:Name="knSelectFile" Grid.Row="0" Grid.Column="2" Content="..." HorizontalAlignment="Right" Height="21"  VerticalAlignment="Bottom" Width="18" Click="KnSelectFile_Click" Margin="0,0,0,5"/>
-
-        <Button x:Name="btLoad" Grid.Row="1" Content="Load" HorizontalAlignment="Left" Height="21" Margin="5,5,0,0" VerticalAlignment="Top" Width="42" Click="BtLoad_Click"/>
-        <Label x:Name="lbSummary" Content="Label" Margin="5,5,5,169" BorderThickness="1" Background="#FFF9F3F3" Grid.Row="1" Grid.Column="1"/>
-        <CheckBox x:Name="chzUn" Grid.Row="1" Content="Un..." HorizontalAlignment="Left" Height="19" Margin="5,38,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_s" Grid.Row="1" Content="...s" HorizontalAlignment="Left" Height="19" Margin="5,58,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_ed" Grid.Row="1" Content="...ed" HorizontalAlignment="Left" Height="19" Margin="5,78,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_ing" Grid.Row="1" Content="...ing" HorizontalAlignment="Left" Height="19" Margin="5,98,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_ly" Grid.Row="1" Content="...ly" HorizontalAlignment="Left" Height="19" Margin="5,118,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_en" Grid.Row="1" Content="...en" HorizontalAlignment="Left" Height="19" Margin="5,138,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_est" Grid.Row="1" Content="...est" HorizontalAlignment="Left" Height="19" Margin="5,158,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_er" Grid.Row="1" Content="...er" HorizontalAlignment="Left" Height="19" Margin="5,178,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_y" Grid.Row="1" Content="...y" HorizontalAlignment="Left" Height="19" Margin="5,198,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_less" Grid.Row="1" Content="...less" HorizontalAlignment="Left" Height="19" Margin="5,218,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
-        <CheckBox x:Name="chz_IrVerb" Grid.Row="1" Content="Ir.Verbs" HorizontalAlignment="Left" Height="19" Margin="5,237,0,0" VerticalAlignment="Top" Width="65" IsChecked="True"/>
-        <Line x:Name="lhor" Grid.Row="1" Grid.Column="2" Margin="0" VerticalAlignment="Top" StrokeThickness="1" Stroke="Blue"/>
-        <DataGrid x:Name="dtOut" Grid.Row="1" Margin="15" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" SelectionChanged="DtOut_SelectionChanged" SizeChanged="DtOut_SizeChanged" BeginningEdit="DtOut_BeginningEdit" />
-        <CheckBox x:Name="chUnknown" Grid.Row="1" Content="Unknown words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,144" VerticalAlignment="Bottom" Width="110" Click="ChUnknown_Click" IsThreeState="True" Grid.Column="1"/>
-        <Button x:Name="btSetKnown" Grid.Row="1" Content="Set known" HorizontalAlignment="Right" Height="28" Margin="0,0,0,84" VerticalAlignment="Bottom" Width="110" Click="BtSetKnown_Click" Grid.ColumnSpan="2" />
-        <Button x:Name="btSetUnknown" Grid.Row="1" Content="Set unknown" HorizontalAlignment="Right" Margin="0,0,0,51" VerticalAlignment="Bottom" Width="110" Click="BtSetUnknown_Click" Height="28" Grid.ColumnSpan="2"/>
-        <Button x:Name="btSaveDB" Grid.Row="1" Content="Save DB words" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="110" Click="BtSaveDB_Click" IsEnabled="False" Height="28" Grid.ColumnSpan="2" />
-        <CheckBox x:Name="chKnown" Grid.Row="1" Content="Known words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,119" VerticalAlignment="Bottom" Width="110" IsThreeState="True" Click="ChKnown_Click" Grid.Column="1" />
-
-        <ItemsControl Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Path=PosLines}">
+        <ComboBox x:Name="lstFileNames" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Width="Auto" Margin="5,0,21,0" VerticalAlignment="Top"/>
+        <Button x:Name="knSelectFile" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="21" Width="18" Content="..." HorizontalAlignment="Right" VerticalAlignment="Top" Click="KnSelectFile_Click" Margin="0,0,3,0"/>
+        <Line x:Name="lhor" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0" VerticalAlignment="Bottom" StrokeThickness="1" Stroke="Red"/>
+        <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" ItemsSource="{Binding Path=PosLines}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas />
@@ -54,7 +33,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Fill="Red" Width="2" Height="9" />
+                    <Rectangle Fill="Red" Width="1" Height="9" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
@@ -64,6 +43,27 @@
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
+
+        <Button x:Name="btLoad" Grid.Row="2" Content="Load" HorizontalAlignment="Left" Height="21" Margin="5,5,0,0" VerticalAlignment="Top" Width="42" Click="BtLoad_Click"/>
+        <Label x:Name="lbSummary" Content="Label" Margin="5,5,5,169" BorderThickness="1" Background="#FFF9F3F3" Grid.Row="2" Grid.Column="1"/>
+        <CheckBox x:Name="chzUn" Grid.Row="2" Content="Un..." HorizontalAlignment="Left" Height="19" Margin="5,38,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_s" Grid.Row="2" Content="...s" HorizontalAlignment="Left" Height="19" Margin="5,58,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_ed" Grid.Row="2" Content="...ed" HorizontalAlignment="Left" Height="19" Margin="5,78,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_ing" Grid.Row="2" Content="...ing" HorizontalAlignment="Left" Height="19" Margin="5,98,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_ly" Grid.Row="2" Content="...ly" HorizontalAlignment="Left" Height="19" Margin="5,118,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_en" Grid.Row="2" Content="...en" HorizontalAlignment="Left" Height="19" Margin="5,138,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_est" Grid.Row="2" Content="...est" HorizontalAlignment="Left" Height="19" Margin="5,158,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_er" Grid.Row="2" Content="...er" HorizontalAlignment="Left" Height="19" Margin="5,178,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_y" Grid.Row="2" Content="...y" HorizontalAlignment="Left" Height="19" Margin="5,198,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_less" Grid.Row="2" Content="...less" HorizontalAlignment="Left" Height="19" Margin="5,218,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
+        <CheckBox x:Name="chz_IrVerb" Grid.Row="2" Content="Ir.Verbs" HorizontalAlignment="Left" Height="19" Margin="5,237,0,0" VerticalAlignment="Top" Width="65" IsChecked="True"/>
+        <DataGrid x:Name="dtOut" Grid.Row="2" Margin="10,5" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" SelectionChanged="DtOut_SelectionChanged" SizeChanged="DtOut_SizeChanged" BeginningEdit="DtOut_BeginningEdit" />
+        <CheckBox x:Name="chUnknown" Grid.Row="2" Content="Unknown words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,144" VerticalAlignment="Bottom" Width="110" Click="ChUnknown_Click" IsThreeState="True" Grid.Column="1"/>
+        <Button x:Name="btSetKnown" Grid.Row="2" Content="Set known" HorizontalAlignment="Right" Height="28" Margin="0,0,0,84" VerticalAlignment="Bottom" Width="110" Click="BtSetKnown_Click" Grid.ColumnSpan="2" />
+        <Button x:Name="btSetUnknown" Grid.Row="2" Content="Set unknown" HorizontalAlignment="Right" Margin="0,0,0,51" VerticalAlignment="Bottom" Width="110" Click="BtSetUnknown_Click" Height="28" Grid.ColumnSpan="2"/>
+        <Button x:Name="btSaveDB" Grid.Row="2" Content="Save DB words" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="110" Click="BtSaveDB_Click" IsEnabled="False" Height="28" Grid.ColumnSpan="2" />
+        <CheckBox x:Name="chKnown" Grid.Row="2" Content="Known words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,119" VerticalAlignment="Bottom" Width="110" IsThreeState="True" Click="ChKnown_Click" Grid.Column="1" />
+
 
     </Grid>
 </Window>
