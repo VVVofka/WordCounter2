@@ -19,7 +19,7 @@ namespace WordCounter {
 		TextProc tp = new TextProc();
 		DbWords db = new DbWords();
 		string sReadFiles = "";
-		Line lhor = new Line();
+		//Line lhor = new Line();
 		MyDataBind bind;
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
@@ -35,12 +35,13 @@ namespace WordCounter {
 			options = new OptionsReg(this, ctrls);
 			db.Load();
 
-			grid1.Children.Add(lhor);
-			Grid.SetRow(lhor, 1);
-			Grid.SetColumn(lhor, 2);
-			lhor.VerticalAlignment = VerticalAlignment.Top;
-			lhor.Stroke = Brushes.Red;
-			lhor.StrokeThickness = 3;
+			/*grid1.Children.Add(lhor);
+						*/
+			//Grid.SetRow(lhor, 1);
+			//Grid.SetColumn(lhor, 2);
+			//lhor.VerticalAlignment = VerticalAlignment.Top;
+			//lhor.Stroke = Brushes.Red;
+			//lhor.StrokeThickness = 3;
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void KnSelectFile_Click(object sender, RoutedEventArgs e) {
 			if (dlg.ShowDialog() == true) {
@@ -219,18 +220,8 @@ namespace WordCounter {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);
 		} // ///////////////////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-			lhor.X1 = dtOut.Margin.Left;
-			lhor.X2 = dtOut.Margin.Left + dtOut.ActualWidth;
-			lhor.Y1 = dtOut.Margin.Top / 2;
-			lhor.Y2 = lhor.Y1;
-
 			if (dtOut.SelectedItems.Count == 0) return;
-			
-			//poslines.Clear();
-			int n = bind.PosLines.Count;
-			for (int i = n - 1; i >= 0; i--) {
-				bind.PosLines.RemoveAt(i);
-			}
+			bind.PosLines.Clear();
 
 			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
 			ItemDists idsts = tp.lst[o.Word];
@@ -239,18 +230,17 @@ namespace WordCounter {
 				ln.X1 = ln.X2 = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
 				ln.Y1 = 1;
 				ln.Y2 = dtOut.Margin.Top - 1;
-				bind.PosLines.Add(ln);
-
-			/*	grid1.Children.Add(ln);
-				Grid.SetRow(ln, 1);
-				Grid.SetColumn(ln, 2);
-				ln.VerticalAlignment = VerticalAlignment.Top;
-				ln.Stroke = Brushes.Blue;
-				ln.StrokeThickness = 3; */
+				Point p = new Point();
+				p.X = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
+				p.Y = 3;
+				bind.PosLines.Add(p);
 			}
-
 		} // ///////////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_SizeChanged(object sender, SizeChangedEventArgs e) {
+			lhor.X1 = dtOut.Margin.Left;
+			lhor.X2 = dtOut.Margin.Left + dtOut.ActualWidth;
+			lhor.Y1 = dtOut.Margin.Top / 2;
+			lhor.Y2 = lhor.Y1;
 			DtOut_SelectionChanged(sender, null);
 		} // /////////////////////////////////////////////////////////////////////////////////////
 	} // *************************************************************************************

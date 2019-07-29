@@ -38,14 +38,15 @@
         <CheckBox x:Name="chz_y" Grid.Row="1" Content="...y" HorizontalAlignment="Left" Height="19" Margin="5,198,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
         <CheckBox x:Name="chz_less" Grid.Row="1" Content="...less" HorizontalAlignment="Left" Height="19" Margin="5,218,0,0" VerticalAlignment="Top" Width="50" IsChecked="True"/>
         <CheckBox x:Name="chz_IrVerb" Grid.Row="1" Content="Ir.Verbs" HorizontalAlignment="Left" Height="19" Margin="5,237,0,0" VerticalAlignment="Top" Width="65" IsChecked="True"/>
-        <DataGrid x:Name="dtOut" Grid.Row="1" Margin="15" BeginningEdit="DtOut_BeginningEdit" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" SelectionChanged="DtOut_SelectionChanged" SizeChanged="DtOut_SizeChanged" />
+        <Line x:Name="lhor" Grid.Row="1" Grid.Column="2" Margin="0" VerticalAlignment="Top" StrokeThickness="1" Stroke="Blue"/>
+        <DataGrid x:Name="dtOut" Grid.Row="1" Margin="15" Grid.Column="2" MouseDoubleClick="DtOut_MouseDoubleClick" SelectionChanged="DtOut_SelectionChanged" SizeChanged="DtOut_SizeChanged" BeginningEdit="DtOut_BeginningEdit" />
         <CheckBox x:Name="chUnknown" Grid.Row="1" Content="Unknown words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,144" VerticalAlignment="Bottom" Width="110" Click="ChUnknown_Click" IsThreeState="True" Grid.Column="1"/>
         <Button x:Name="btSetKnown" Grid.Row="1" Content="Set known" HorizontalAlignment="Right" Height="28" Margin="0,0,0,84" VerticalAlignment="Bottom" Width="110" Click="BtSetKnown_Click" Grid.ColumnSpan="2" />
         <Button x:Name="btSetUnknown" Grid.Row="1" Content="Set unknown" HorizontalAlignment="Right" Margin="0,0,0,51" VerticalAlignment="Bottom" Width="110" Click="BtSetUnknown_Click" Height="28" Grid.ColumnSpan="2"/>
         <Button x:Name="btSaveDB" Grid.Row="1" Content="Save DB words" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="110" Click="BtSaveDB_Click" IsEnabled="False" Height="28" Grid.ColumnSpan="2" />
         <CheckBox x:Name="chKnown" Grid.Row="1" Content="Known words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,119" VerticalAlignment="Bottom" Width="110" IsThreeState="True" Click="ChKnown_Click" Grid.Column="1" />
 
-        <ItemsControl ItemsSource="{Binding Path=PosLines}">
+        <ItemsControl Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Path=PosLines}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas />
@@ -53,12 +54,12 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Line Fill="Red" Width="25" Height="25" />
+                    <Rectangle Fill="Red" Width="2" Height="9" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Canvas.Left" Value="{Binding Path=X1}" />
+                    <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
                     <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
                 </Style>
             </ItemsControl.ItemContainerStyle>

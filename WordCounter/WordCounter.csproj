@@ -67,6 +67,7 @@
     <Compile Include="MyDataBind.cs" />
     <Compile Include="OutGridData.cs" />
     <Compile Include="Pair.cs" />
+    <Compile Include="PosLines.cs" />
     <Compile Include="VVVindowSize.cs" />
     <Compile Include="ZUn.cs" />
     <Page Include="Infa.xaml">
