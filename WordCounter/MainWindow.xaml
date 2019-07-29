@@ -45,7 +45,7 @@
         <Button x:Name="btSaveDB" Grid.Row="1" Content="Save DB words" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="110" Click="BtSaveDB_Click" IsEnabled="False" Height="28" Grid.ColumnSpan="2" />
         <CheckBox x:Name="chKnown" Grid.Row="1" Content="Known words" HorizontalAlignment="Right" Height="20" Margin="0,0,0,119" VerticalAlignment="Bottom" Width="110" IsThreeState="True" Click="ChKnown_Click" Grid.Column="1" />
 
-        <ItemsControl ItemsSource="{Binding Path=poslines}">
+        <ItemsControl ItemsSource="{Binding Path=PosLines}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas />
@@ -58,7 +58,7 @@
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                    <Setter Property="Canvas.Left" Value="{Binding Path=X1}" />
                     <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
                 </Style>
             </ItemsControl.ItemContainerStyle>

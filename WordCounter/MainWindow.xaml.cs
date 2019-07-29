@@ -4,11 +4,8 @@ using Microsoft.Win32;
 using System.Security;
 using System.Media;
 using System.Windows.Controls;
-using System;
 using System.Windows.Media;
-using System.Collections.Generic;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -23,10 +20,13 @@ namespace WordCounter {
 		DbWords db = new DbWords();
 		string sReadFiles = "";
 		Line lhor = new Line();
-		ObservableCollection<Line> poslines = new ObservableCollection<Line>();
+		MyDataBind bind;
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
 			InitializeComponent();
+			bind = new MyDataBind();
+			this.DataContext = bind;
+
 			dlg = new OpenFileDialog();
 			dlg.Multiselect = true;
 			dlg.DefaultExt = ".txt"; // Default file extension
@@ -227,9 +227,9 @@ namespace WordCounter {
 			if (dtOut.SelectedItems.Count == 0) return;
 			
 			//poslines.Clear();
-			int n = poslines.Count;
+			int n = bind.PosLines.Count;
 			for (int i = n - 1; i >= 0; i--) {
-				poslines.RemoveAt(i);
+				bind.PosLines.RemoveAt(i);
 			}
 
 			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
@@ -239,14 +239,14 @@ namespace WordCounter {
 				ln.X1 = ln.X2 = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
 				ln.Y1 = 1;
 				ln.Y2 = dtOut.Margin.Top - 1;
-				poslines.Add(ln);
+				bind.PosLines.Add(ln);
 
-				grid1.Children.Add(ln);
+			/*	grid1.Children.Add(ln);
 				Grid.SetRow(ln, 1);
 				Grid.SetColumn(ln, 2);
 				ln.VerticalAlignment = VerticalAlignment.Top;
 				ln.Stroke = Brushes.Blue;
-				ln.StrokeThickness = 3;
+				ln.StrokeThickness = 3; */
 			}
 
 		} // ///////////////////////////////////////////////////////////////////////////////////////
