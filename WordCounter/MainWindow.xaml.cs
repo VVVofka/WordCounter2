@@ -1,11 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using System.Security;
 using System.Media;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 // https://code.msdn.microsoft.com/windowsapps/Data-Binding-Demo-82a17c83 - привязка данных
 //см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
@@ -75,6 +75,14 @@ namespace WordCounter {
 					return;
 				}
 			}
+			sReadFiles = sReadFiles.Replace("`", "'");
+			sReadFiles = sReadFiles.Replace("'s ", " ");
+			sReadFiles = sReadFiles.Replace("'ll ", " ");
+			sReadFiles = sReadFiles.Replace("'re ", " ");
+			sReadFiles = sReadFiles.Replace("'m ", " ");
+			sReadFiles = sReadFiles.Replace("'d ", " ");
+			sReadFiles = sReadFiles.Replace("n't", "");
+			sReadFiles = sReadFiles.Replace("'ve", "");
 			tp = new TextProc();
 			tp.irrVerb = (bool)chz_IrVerb.IsChecked;
 			tp.Run(sReadFiles);
@@ -152,7 +160,7 @@ namespace WordCounter {
 			tp.DelEnd("'s");
 			tp.DelEnd("n't");
 
-			lbSummary.Content = $"Text lenght=\n" + tp.lenText + " bytes and " + tp.allChars + " chars\nWords:\n" +
+			lbSummary.Content = $"Text lenght=\n" + tp.lenText + " bytes\n" + tp.allChars + " chars\n\nWords:\n" +
 			tp.allWord + " All\n" + tp.uniqWord + " Unique\n" + tp.uniqMiddle + " Unique middle\n" + (tp.uniqWord - tp.uniqMiddle) + " Duplicate";
 			if (db.db == null) {
 				btSaveDB.Foreground = Brushes.Red;
@@ -166,6 +174,29 @@ namespace WordCounter {
 			SystemSounds.Asterisk.Play();
 		} // ////////////////////////////////////////////////////////////////////////////
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+			if (btSaveDB.IsEnabled) {
+				// Configure the message box
+				Window owner = ((bool)true ? this : null);
+				var messageBoxText = "DB not saved! Save?";
+				var caption = "Confirm";
+				var button = (MessageBoxButton)Enum.Parse(typeof(MessageBoxButton), "YesNo");
+				var icon = (MessageBoxImage)Enum.Parse(typeof(MessageBoxImage), "Question");
+				var defaultResult = (MessageBoxResult)Enum.Parse(typeof(MessageBoxResult), "Yes");
+				var options = (MessageBoxOptions)Enum.Parse(typeof(MessageBoxOptions), "None");
+
+				// Show message box, passing the window owner if specified
+				MessageBoxResult result;
+				if (owner == null) {
+					result = System.Windows.MessageBox.Show(messageBoxText, caption, button, icon, defaultResult, options);
+				} else {
+					result = System.Windows.MessageBox.Show(owner, messageBoxText, caption, button, icon, defaultResult,
+						options);
+				}
+				if (result == MessageBoxResult.Yes) {
+					btSaveDB.Focus();
+					BtSaveDB_Click(null, null);
+				}
+			}
 			options.SaveAll();
 		} // ///////////////////////////////////////////////////////////////////////
 		private void BtSetKnown_Click(object sender, RoutedEventArgs e) {
@@ -185,8 +216,8 @@ namespace WordCounter {
 			//см. Интерфейс INotifyPropertyChanged https://metanit.com/sharp/wpf/11.2.php
 		} // //////////////////////////////////////////////////////////////////////////////
 		private void BtSaveDB_Click(object sender, RoutedEventArgs e) {
-			foreach (OutGridData i in tp.grdata)
-				db.Push(i.Word, i.Known, i.Unknown);
+			foreach (OutGridData ogd in tp.grdata)
+				db.Push(ogd.Word, ogd.Known, ogd.Unknown);
 			db.Save();
 			btSaveDB.IsEnabled = false;
 			btSaveDB.Foreground = Brushes.Black;

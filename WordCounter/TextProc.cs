@@ -187,14 +187,11 @@ namespace WordCounter {
 				//int val = dict_db[wc.word];
 				bool bknow = false, bunknow = false, needAdd = true;
 				if (dict_db != null) {
-					if (!dict_db.ContainsKey(wc.word)) {
-						needAdd = true;
-						//continue;
-					} else {
-						KnownUnknown.Pop(dict_db, wc.word, out bknow, out bunknow);
 						n++;
+					if (dict_db.ContainsKey(wc.word)) {
+						KnownUnknown.Pop(dict_db, wc.word, out bknow, out bunknow);
 						if (know == null && unknow == null) {
-							needAdd = true;
+							//needAdd = true;
 						} else if (know != null && unknow != null) {
 							needAdd = ((bunknow == unknow) && (bknow == know));
 						} else if (unknow != null && know == null) {
@@ -203,7 +200,7 @@ namespace WordCounter {
 							needAdd = (bknow == know);
 					}
 				}
-				if (needAdd == true) {
+				if (needAdd) {
 					if (wc.dists < min)
 						min = wc.dists;
 					if (wc.dists > max)
