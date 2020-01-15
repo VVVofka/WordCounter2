@@ -55,18 +55,19 @@ namespace WordCounter {
 		public void Sorting() {
 			lstord.Clear();
 			foreach (KeyValuePair<string, ItemDists> item in lst) {
-				if (item.Value.Positions.Count <= 1) continue;
 				CWordCount wc = new CWordCount();
 				wc.cnt = item.Value.Positions.Count;
 				wc.dists = item.Value.SumDists;
 				wc.word = item.Key;
 				lstord.Add(wc);
 			}
-			lstord.Sort();
-			double mindist = lstord[lstord.Count-1].dists;
-			double maxdist = lstord[0].dists;
-			foreach(CWordCount item in lstord) {
-				item.dists = 99 * (item.dists - mindist) / (maxdist - mindist);
+			if (lstord.Count > 0) {
+				lstord.Sort();
+				double mindist = lstord[lstord.Count - 1].dists;
+				double maxdist = lstord[0].dists;
+				foreach (CWordCount item in lstord) {
+					item.dists = 99 * (item.dists - mindist) / (maxdist - mindist);
+				}
 			}
 		} // ///////////////////////////////////////////////////////////////////////
 		public WordCnt At(int pos) {
@@ -176,7 +177,7 @@ namespace WordCounter {
 			foreach (string keyDel in keys4Del)
 				lst.Remove(keyDel);
 		} // /////////////// public void DelUn() /////////////////////////////
-		public void report(Dictionary<string, int> dict_db, bool? know, bool? unknow, string path = "") {
+		public void report(Dictionary<string, int> dict_db, bool? know, bool? unknow, int min_cnt, string path = "") {
 			Sorting();
 			grdata = new ObservableCollection<OutGridData>();
 			int n = 0;
@@ -205,10 +206,12 @@ namespace WordCounter {
 						min = wc.dists;
 					if (wc.dists > max)
 						max = wc.dists;
-					grdata.Add(new OutGridData(n, wc.cnt, wc.dists, wc.word, bknow, bunknow));
+					// Не загружать, если количество менее
+					if (wc.cnt >= min_cnt)
+						grdata.Add(new OutGridData(n, wc.cnt, wc.dists, wc.word, bknow, bunknow));
 				}
 			}
-			foreach(OutGridData i in grdata) {
+			foreach (OutGridData i in grdata) {
 				i.Percent = (double)(0.1 * (int)(1000 * (i.Percent - min) / (max - min)));
 			}
 

@@ -30,8 +30,8 @@ namespace WordCounter {
 			dlg = new OpenFileDialog();
 			dlg.Multiselect = true;
 			dlg.DefaultExt = ".txt"; // Default file extension
-			dlg.Filter = "Text documents (.txt)|*.txt|All|*.*"; // Filter files by extension
-			Control[] ctrls = new Control[] { chKnown, chUnknown, lstFileNames, txFileName, chzUn, chz_s, chz_ed, chz_ing, chz_en, chz_est, chz_ly, chz_er, chz_y, chz_less, chz_IrVerb };
+			dlg.Filter = "Text documents (.txt)|*.txt|(.srt)|*.srt|All|*.*"; // Filter files by extension
+			Control[] ctrls = new Control[] { chKnown, chUnknown, lstFileNames, txFileName, chzUn, chz_s, chz_ed, chz_ing, chz_en, chz_est, chz_ly, chz_er, chz_y, chz_less, chz_IrVerb, txMinCnt };
 			options = new OptionsReg(this, ctrls);
 			db.Load();
 
@@ -61,6 +61,7 @@ namespace WordCounter {
 			}
 		} /////////////////////////////////////////////////////////////////////////////////
 		private void BtLoad_Click(object sender, RoutedEventArgs e) {
+			sReadFiles = "";
 			dtOut.ItemsSource = null;
 			for (int i = 0; i < lstFileNames.Items.Count; i++) {
 				string fname = lstFileNames.Items[i].ToString();
@@ -198,7 +199,14 @@ namespace WordCounter {
 			refresh();
 		} // //////////////////////////////////////////////////////////////////////////////////
 		private void refresh() {
-			tp.report(db.db, chKnown.IsChecked, chUnknown.IsChecked, txFileName.Text + "~");
+			int min_cnt = 0;
+			if (int.TryParse(txMinCnt.Text.Trim(), out min_cnt)) {
+				txMinCnt.Text =  min_cnt.ToString();
+			} else {
+				min_cnt = 1;
+				txMinCnt.Text = "1";
+			}
+			tp.report(db.db, chKnown.IsChecked, chUnknown.IsChecked, min_cnt, txFileName.Text + "~");
 			dtOut.ItemsSource = tp.grdata;
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
@@ -214,7 +222,6 @@ namespace WordCounter {
 			string url = "https://translate.yandex.ru/?lang=en-ru&text=" + o.Word;
 			url.Replace(" ", "%20");
 			infa.Browse(url);
-
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);
