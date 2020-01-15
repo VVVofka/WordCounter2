@@ -44,12 +44,10 @@ namespace WordCounter {
 			allChars += s.Length;
 			if (lst.TryGetValue(s, out itdst)) {
 				itdst.Add(pos); //lst[s] = cnt + 1;
-			} else {
-				if (s != "the" && s != "and" && s != "you") {
-					itdst = new ItemDists(pos);
-					lst.Add(s, itdst);
-					uniqWord++;
-				}
+			} else if (s != "the" && s != "and" && s != "you") {
+				itdst = new ItemDists(pos);
+				lst.Add(s, itdst);
+				uniqWord++;
 			}
 		} // //////////////////////////////////////////////////////////////////////
 		public void Sorting() {
