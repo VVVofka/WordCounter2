@@ -62,6 +62,9 @@ namespace WordCounter {
 		} /////////////////////////////////////////////////////////////////////////////////
 		private void BtLoad_Click(object sender, RoutedEventArgs e) {
 			sReadFiles = "";
+			btLoad_Add_Click(sender, e);
+		} // ////////////////////////////////////////////////////////////////////////////
+		private void btLoad_Add_Click(object sender, RoutedEventArgs e) {
 			dtOut.ItemsSource = null;
 			for (int i = 0; i < lstFileNames.Items.Count; i++) {
 				string fname = lstFileNames.Items[i].ToString();
@@ -149,7 +152,7 @@ namespace WordCounter {
 			tp.DelEnd("'s");
 			tp.DelEnd("n't");
 
-			lbSummary.Content = $"Text lenght= " + tp.lenText + " bytes and " + tp.allChars + " chars\nWords:\n" +
+			lbSummary.Content = $"Text lenght=\n" + tp.lenText + " bytes and " + tp.allChars + " chars\nWords:\n" +
 			tp.allWord + " All\n" + tp.uniqWord + " Unique\n" + tp.uniqMiddle + " Unique middle\n" + (tp.uniqWord - tp.uniqMiddle) + " Duplicate";
 			if (db.db == null) {
 				btSaveDB.Foreground = Brushes.Red;
@@ -201,7 +204,7 @@ namespace WordCounter {
 		private void refresh() {
 			int min_cnt = 0;
 			if (int.TryParse(txMinCnt.Text.Trim(), out min_cnt)) {
-				txMinCnt.Text =  min_cnt.ToString();
+				txMinCnt.Text = min_cnt.ToString();
 			} else {
 				min_cnt = 1;
 				txMinCnt.Text = "1";

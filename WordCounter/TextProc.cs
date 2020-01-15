@@ -64,7 +64,7 @@ namespace WordCounter {
 				double mindist = lstord[lstord.Count - 1].dists;
 				double maxdist = lstord[0].dists;
 				foreach (CWordCount item in lstord) {
-					item.dists = 99 * (item.dists - mindist) / (maxdist - mindist);
+					item.dists = (mindist == maxdist) ? 0 : 99 * (item.dists - mindist) / (maxdist - mindist);
 				}
 			}
 		} // ///////////////////////////////////////////////////////////////////////
@@ -180,8 +180,9 @@ namespace WordCounter {
 			grdata = new ObservableCollection<OutGridData>();
 			int n = 0;
 			double sum = 0, min = 0, max = 0;
-			for (int i = 0; i < lstord.Count; i++) {
-				CWordCount wc = lstord[i];
+			//for (int i = 0; i < lstord.Count; i++) {
+			foreach (CWordCount wc in lstord) {
+				//CWordCount wc = lstord[i];
 				sum += wc.cnt;
 				//int val = dict_db[wc.word];
 				bool bknow = false, bunknow = false, needAdd = true;
@@ -210,7 +211,7 @@ namespace WordCounter {
 				}
 			}
 			foreach (OutGridData i in grdata) {
-				i.Percent = (double)(0.1 * (int)(1000 * (i.Percent - min) / (max - min)));
+				i.Percent = (min == max) ? 0 : (double)(0.1 * (int)(1000 * (i.Percent - min) / (max - min)));
 			}
 
 			if (path.Length == 0) {
@@ -229,8 +230,10 @@ namespace WordCounter {
 						for (int i = 0; i < lstord.Count; i++) {
 							CWordCount wc = lstord[i];
 							sumf += wc.cnt;
-							sw.WriteLine("{0};{1};{2};{3};{4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
-							Console.WriteLine("{0} {1} {2} {3} {4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
+							if (allWord > 0) {
+								sw.WriteLine("{0};{1};{2};{3};{4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
+								Console.WriteLine("{0} {1} {2} {3} {4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
+							}
 						}
 					}
 				} catch (Exception ex) {
