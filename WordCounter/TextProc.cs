@@ -187,18 +187,21 @@ namespace WordCounter {
 				//int val = dict_db[wc.word];
 				bool bknow = false, bunknow = false, needAdd = true;
 				if (dict_db != null) {
-					if (!dict_db.ContainsKey(wc.word))
-						continue;
-					KnownUnknown.Pop(dict_db, wc.word, out bknow, out bunknow);
-					n++;
-					if (know == null && unknow == null) {
+					if (!dict_db.ContainsKey(wc.word)) {
 						needAdd = true;
-					} else if (know != null && unknow != null) {
-						needAdd = ((bunknow == unknow) && (bknow == know));
-					} else if (unknow != null && know == null) {
-						needAdd = (bunknow == unknow);
-					} else if (know != null && unknow == null)
-						needAdd = (bknow == know);
+						//continue;
+					} else {
+						KnownUnknown.Pop(dict_db, wc.word, out bknow, out bunknow);
+						n++;
+						if (know == null && unknow == null) {
+							needAdd = true;
+						} else if (know != null && unknow != null) {
+							needAdd = ((bunknow == unknow) && (bknow == know));
+						} else if (unknow != null && know == null) {
+							needAdd = (bunknow == unknow);
+						} else if (know != null && unknow == null)
+							needAdd = (bknow == know);
+					}
 				}
 				if (needAdd == true) {
 					if (wc.dists < min)
@@ -210,8 +213,8 @@ namespace WordCounter {
 						grdata.Add(new OutGridData(n, wc.cnt, wc.dists, wc.word, bknow, bunknow));
 				}
 			}
-			foreach (OutGridData i in grdata) {
-				i.Percent = (min == max) ? 0 : (double)(0.1 * (int)(1000 * (i.Percent - min) / (max - min)));
+			foreach (OutGridData grd in grdata) {
+				grd.Percent = (min == max) ? 0 : (double)(0.1 * (int)(1000 * (grd.Percent - min) / (max - min)));
 			}
 
 			if (path.Length == 0) {
