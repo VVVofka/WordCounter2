@@ -75,14 +75,14 @@ namespace WordCounter {
 					return;
 				}
 			}
-			sReadFiles = sReadFiles.Replace("`", "'");
-			sReadFiles = sReadFiles.Replace("'s", "");
-			sReadFiles = sReadFiles.Replace("'ll ", " will ");
-			sReadFiles = sReadFiles.Replace("'re ", " are ");
-			sReadFiles = sReadFiles.Replace("'m ", " am ");
-			sReadFiles = sReadFiles.Replace("'d ", " ");
-			sReadFiles = sReadFiles.Replace("n't", " not");
-			sReadFiles = sReadFiles.Replace("'ve", "");
+			//sReadFiles = sReadFiles.Replace("`", "'");
+			//sReadFiles = sReadFiles.Replace("'s", "");
+			//sReadFiles = sReadFiles.Replace("'ll ", " will ");
+			//sReadFiles = sReadFiles.Replace("'re ", " are ");
+			//sReadFiles = sReadFiles.Replace("'m ", " am ");
+			//sReadFiles = sReadFiles.Replace("'d ", " ");
+			//sReadFiles = sReadFiles.Replace("n't", " not");
+			//sReadFiles = sReadFiles.Replace("'ve", "");
 			tp = new TextProc();
 			tp.irrVerb = (bool)chz_IrVerb.IsChecked;
 			tp.Run(sReadFiles);
@@ -151,6 +151,14 @@ namespace WordCounter {
 				tp.ReplEnd("ed", "s");
 				tp.ReplEnd2("ed");
 			}
+			tp.DelEnd("'d");
+			tp.DelEnd("'t");
+			tp.DelEnd("'re");
+			tp.DelEnd("'m");
+			tp.DelEnd("'ve");
+			tp.DelEnd("'ll");
+			tp.DelEnd("'s");
+			tp.DelEnd("n't");
 
 			lbSummary.Content = $"Text lenght=\n" + tp.lenText + " bytes\n" + tp.allChars + " chars\n\nWords:\n" +
 			tp.allWord + " All\n" + tp.uniqWord + " Unique\n" + tp.uniqMiddle + " Unique middle\n" + (tp.uniqWord - tp.uniqMiddle) + " Duplicate";
