@@ -245,17 +245,20 @@ namespace WordCounter {
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
 			if (dtOut.SelectedItems.Count == 0 || sReadFiles.Length == 0) return;
+			//if(e.Source.cur)
 			Infa infa = new Infa();
+			System.Windows.Controls.DataGrid ctrl = (System.Windows.Controls.DataGrid)sender;
+			if (ctrl.CurrentColumn.DisplayIndex == 3) {
+				VVVindowSize.ReSize(infa, 0.6, 0.8, 0.33, 0.5, this);
+				//infa.WindowState = WindowState.Maximized;
+				infa.Owner = this;
+				infa.Show();
 
-			VVVindowSize.ReSize(infa, 0.6, 0.8, 0.33, 0.5, this);
-			//infa.WindowState = WindowState.Maximized;
-			infa.Owner = this;
-			infa.Show();
-
-			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
-			string url = "https://translate.yandex.ru/?lang=en-ru&text=" + o.Word;
-			url.Replace(" ", "%20");
-			infa.Browse(url);
+				OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
+				string url = "https://translate.yandex.ru/?lang=en-ru&text=" + o.Word;
+				url.Replace(" ", "%20");
+				infa.Browse(url);
+			}
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			VVVindowSize.ReSize(this, 0.4, 0.75, 0.1, 0.2);

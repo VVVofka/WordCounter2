@@ -232,7 +232,7 @@ namespace WordCounter {
 							sumf += wc.cnt;
 							if (allWord > 0) {
 								sw.WriteLine("{0};{1};{2};{3};{4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
-								Console.WriteLine("{0} {1} {2} {3} {4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
+								//Console.WriteLine("{0} {1} {2} {3} {4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
 							}
 						}
 					}

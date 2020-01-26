@@ -86,7 +86,11 @@ namespace WordCounter {
 				while ((line = sr.ReadLine()) != null) {
 					string sval = line.Substring(0, 1);
 					string skey = line.Substring(1, line.Length - 1);
-					db.Add(skey, KnownUnknown.getN(sval));
+					try {
+						db.Add(skey, KnownUnknown.getN(sval));
+					} catch (ArgumentException) {
+						Console.WriteLine("An element with Key = " + skey + " already exists.");
+					}
 				}
 			}
 		} // ///////////////////////////////////////////////////////////////////////////////
@@ -94,7 +98,9 @@ namespace WordCounter {
 			if (fname.Length == 0)
 				fname = defFName;
 			using (StreamWriter sw = new StreamWriter(fname, false, System.Text.Encoding.Default)) {
-				foreach (KeyValuePair<string, int> i in db) {
+				IEnumerable<KeyValuePair<string, int>> query = db.OrderBy(i => i.Key);
+				foreach (KeyValuePair<string, int> i in query) {
+				//foreach (KeyValuePair<string, int> i in db) {
 					string s = i.Value.ToString() + i.Key;
 					sw.WriteLine(s);
 				}
