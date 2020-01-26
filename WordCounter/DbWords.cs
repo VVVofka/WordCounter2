@@ -99,8 +99,7 @@ namespace WordCounter {
 				fname = defFName;
 			using (StreamWriter sw = new StreamWriter(fname, false, System.Text.Encoding.Default)) {
 				IEnumerable<KeyValuePair<string, int>> query = db.OrderBy(i => i.Key);
-				foreach (KeyValuePair<string, int> i in query) {
-				//foreach (KeyValuePair<string, int> i in db) {
+				foreach (KeyValuePair<string, int> i in query) {	//foreach (KeyValuePair<string, int> i in db) {
 					string s = i.Value.ToString() + i.Key;
 					sw.WriteLine(s);
 				}
