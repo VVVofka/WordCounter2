@@ -15,6 +15,10 @@ namespace WordCounter {
 			keyPath = keyPath0 + "\\" + w.Name;
 			Init(ctrls);
 		} // ////////////////////////////////////////////////////////////////////////////////
+		public int Clear() {
+			lst.Clear();
+			return lst.Count;
+		} // /////////////////////////////////////////////////////////////////////////////////////
 		public void SaveAll() {
 			string keyName, ctrlVal;
 			foreach (Control ctrl in lst) {

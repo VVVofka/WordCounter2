@@ -17,6 +17,17 @@ namespace WordCounter {
 		public ObservableCollection<OutGridData> grdata;
 		private IrregularVerbs irr = new IrregularVerbs();
 		// //////////////////////////////////////////////////////////////////
+		public int Clear() {
+			int ret = 0;
+			lst.Clear();
+			ret += lst.Count;
+			lstord.Clear();
+			ret += lstord.Count;
+			grdata.Clear();
+			ret += grdata.Count;
+			ret += irr.Clear();
+			return ret;
+		} // /////////////////////////////////////////////////////////////////
 		public void Run(string inp_text) {
 			string buf = "";
 			lenText = +inp_text.Length;

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
 namespace WordCounter {
 	public static class KnownUnknown {
 		public static int NO_DEF = 0;
@@ -103,8 +100,10 @@ namespace WordCounter {
 					string s = i.Value.ToString() + i.Key;
 					sw.WriteLine(s);
 				}
+				sw.Flush();
+				sw.Close();
 			}
-		} // ///////////////////////////////////////////////////////////////////////////////
+		} // ///////////////  ////////////////////////////////////////////////////////////////
 		public void Push(string key, bool know, bool unknow) {
 			if (db == null)
 				db = new Dictionary<string, int>();
@@ -114,6 +113,10 @@ namespace WordCounter {
 			else
 				db.Add(key, val);
 		} // //////////////////////////////////////////////////////////////////////////////
+		public int  Clear() {
+			db.Clear();
+			return db.Count();
+		} // /////////////////////////////////////////////////////////////////////////////
 	} // ************************************************************************************
 }
 

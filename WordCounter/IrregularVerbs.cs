@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WordCounter {
 	class IrregularVerbs {
@@ -12,6 +10,10 @@ namespace WordCounter {
 		public IrregularVerbs() {
 			Load(fname);
 		} // /////////////////////////////////////////////////////////////////////////////
+		public int Clear() {
+			db.Clear();
+			return db.Count;
+		} // //////////////////////////////////////////////////////////////////////////////
 		private void Load(string fname) {
 			string dbfname = fname;
 			if (!File.Exists(dbfname)) {
@@ -39,6 +41,7 @@ namespace WordCounter {
 						break;
 					db.Add(key, val);
 				}
+				sr.Close();
 			}
 		} // ///////////////////////////////////////////////////////////////////////////////
 		public string getInfinitive(string s) {
