@@ -32,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>WordCounter.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +42,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>WordCounter.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeAnalysis, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -98,6 +100,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DbWords.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Infa.xaml.cs">
       <DependentUpon>Infa.xaml</DependentUpon>
     </Compile>
@@ -106,7 +109,6 @@
     <Compile Include="MyDataBind.cs" />
     <Compile Include="OutGridData.cs" />
     <Compile Include="Pair.cs" />
-    <Compile Include="PosLines.cs" />
     <Compile Include="VVVindowSize.cs" />
     <Compile Include="ZUn.cs" />
     <Page Include="Infa.xaml">
@@ -155,6 +157,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="WordCounter.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
