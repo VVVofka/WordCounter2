@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
-using System.Windows;
-using Microsoft.Win32;
-using System.Security;
 using System.Media;
+using System.Security;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -14,23 +14,25 @@ namespace WordCounter {
 	/// Логика взаимодействия для MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window {
-		private OpenFileDialog dlg;
-		private OptionsReg options; // save controls state
+		private readonly OpenFileDialog dlg;
+		private readonly OptionsReg options; // save controls state
 		TextProc tp = new TextProc();
-		DbWords db = new DbWords();
+		readonly DbWords db = new DbWords();
 		string sReadFiles = "";
+
 		//Line lhor = new Line();
-		MyDataBind bind;
+		readonly MyDataBind bind;
 		// //////////////////////////////////////////////////////
 		public MainWindow() {
 			InitializeComponent();
 			bind = new MyDataBind();
 			this.DataContext = bind;
 
-			dlg = new OpenFileDialog();
-			dlg.Multiselect = true;
-			dlg.DefaultExt = ".txt"; // Default file extension
-			dlg.Filter = "Text documents (.txt)|*.txt|(.srt)|*.srt|All|*.*"; // Filter files by extension
+			dlg = new OpenFileDialog {
+				Multiselect = true,
+				DefaultExt = ".txt", // Default file extension
+				Filter = "Text documents (.txt)|*.txt|(.srt)|*.srt|All|*.*" // Filter files by extension
+			};
 			Control[] ctrls = new Control[] { chKnown, chUnknown, lstFileNames, txFileName, chzUn, chz_s, chz_ed, chz_ing, chz_en, chz_est, chz_ly, chz_er, chz_y, chz_less, chz_IrVerb, txMinCnt };
 			options = new OptionsReg(this, ctrls);
 			db.Load();
@@ -62,9 +64,9 @@ namespace WordCounter {
 		} /////////////////////////////////////////////////////////////////////////////////
 		private void BtLoad_Click(object sender, RoutedEventArgs e) {
 			sReadFiles = "";
-			btLoad_Add_Click(sender, e);
+			BtLoad_Add_Click(sender, e);
 		} // ////////////////////////////////////////////////////////////////////////////
-		private void btLoad_Add_Click(object sender, RoutedEventArgs e) {
+		private void BtLoad_Add_Click(object sender, RoutedEventArgs e) {
 			dtOut.ItemsSource = null;
 			for(int i = 0; i < lstFileNames.Items.Count; i++) {
 				string fname = lstFileNames.Items[i].ToString();
@@ -75,16 +77,10 @@ namespace WordCounter {
 					return;
 				}
 			}
-			//sReadFiles = sReadFiles.Replace("`", "'");
-			//sReadFiles = sReadFiles.Replace("'s", "");
-			//sReadFiles = sReadFiles.Replace("'ll ", " will ");
-			//sReadFiles = sReadFiles.Replace("'re ", " are ");
-			//sReadFiles = sReadFiles.Replace("'m ", " am ");
-			//sReadFiles = sReadFiles.Replace("'d ", " ");
-			//sReadFiles = sReadFiles.Replace("n't", " not");
-			//sReadFiles = sReadFiles.Replace("'ve", "");
-			tp = new TextProc();
-			tp.irrVerb = (bool)chz_IrVerb.IsChecked;
+			sReadFiles = sReadFiles.Replace("`", "'");
+			tp = new TextProc {
+				irrVerb = (bool)chz_IrVerb.IsChecked
+			};
 			tp.Run(sReadFiles);
 			if(chzUn.IsChecked == true) {
 				tp.DelStart("un");
@@ -151,14 +147,14 @@ namespace WordCounter {
 				tp.ReplEnd("ed", "s");
 				tp.ReplEnd2("ed");
 			}
-			tp.DelEnd("'d");
-			tp.DelEnd("'t");
-			tp.DelEnd("'re");
-			tp.DelEnd("'m");
-			tp.DelEnd("'ve");
+			//tp.DelEnd("'d");
+			//tp.DelEnd("n't");
+			//tp.DelEnd("'re");
+			//tp.DelEnd("'m");
+			//tp.DelEnd("'ve");
 			tp.DelEnd("'ll");
 			tp.DelEnd("'s");
-			tp.DelEnd("n't");
+			//tp.DelEnd("n't");
 
 			lbSummary.Content = $"Text lenght=\n" + tp.lenText + " bytes\n" + tp.allChars + " chars\n\nWords:\n" +
 			tp.allWord + " All\n" + tp.uniqWord + " Unique\n" + tp.uniqMiddle + " Unique middle\n" + (tp.uniqWord - tp.uniqMiddle) + " Duplicate";
@@ -169,7 +165,7 @@ namespace WordCounter {
 			} else {
 				btSaveDB.Foreground = Brushes.Black;
 			}
-			refresh();
+			Refresh();
 			//SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav"); simpleSound.Play();
 			SystemSounds.Asterisk.Play();
 		} // ////////////////////////////////////////////////////////////////////////////
@@ -200,12 +196,12 @@ namespace WordCounter {
 			options.SaveAll();
 		} // ///////////////////////////////////////////////////////////////////////
 		private void BtSetKnown_Click(object sender, RoutedEventArgs e) {
-			setKnown(true);
+			SetKnown(true);
 		} // //////////////////////////////////////////////////////////////////////////////
 		private void BtSetUnknown_Click(object sender, RoutedEventArgs e) {
-			setKnown(false);
+			SetKnown(false);
 		} // //////////////////////////////////////////////////////////////////////////////
-		private void setKnown(bool val) {
+		private void SetKnown(bool val) {
 			for(int i = 0; i < dtOut.SelectedItems.Count; i++) {
 				OutGridData o = (OutGridData)dtOut.SelectedItems[i];
 				o.Known = val;              //tp.grdata[o.N-1].Known = false;
@@ -221,32 +217,30 @@ namespace WordCounter {
 			db.Save();
 			btSaveDB.IsEnabled = false;
 			btSaveDB.Foreground = Brushes.Black;
-			refresh();
+			Refresh();
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_BeginningEdit(object sender, DataGridBeginningEditEventArgs e) {
 			btSaveDB.IsEnabled = true;
 		} // /////////////////////////////////////////////////////////////////////////////////
 		private void ChUnknown_Click(object sender, RoutedEventArgs e) {
-			refresh();
+			Refresh();
 		} // ///////////////////////////////////////////////////////////////////////////////////////////
 		private void ChKnown_Click(object sender, RoutedEventArgs e) {
-			refresh();
+			Refresh();
 		} // //////////////////////////////////////////////////////////////////////////////////
-		private void refresh() {
-			int min_cnt = 0;
-			if(int.TryParse(txMinCnt.Text.Trim(), out min_cnt)) {
+		private void Refresh() {
+			if(int.TryParse(txMinCnt.Text.Trim(), out int min_cnt)) {
 				txMinCnt.Text = min_cnt.ToString();
 			} else {
 				min_cnt = 1;
 				txMinCnt.Text = "1";
 			}
-			tp.report(db.db, chKnown.IsChecked, chUnknown.IsChecked, min_cnt, txFileName.Text + "~");
+			tp.Report(db.db, chKnown.IsChecked, chUnknown.IsChecked, min_cnt, txFileName.Text + "~");
 			dtOut.ItemsSource = tp.grdata;
 		} // ////////////////////////////////////////////////////////////////////////////////
 		private void DtOut_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
 			if(dtOut.SelectedItems.Count == 0 || sReadFiles.Length == 0)
 				return;
-			//if(e.Source.cur)
 			Infa infa = new Infa();
 			System.Windows.Controls.DataGrid ctrl = (System.Windows.Controls.DataGrid)sender;
 			if(ctrl.CurrentColumn.DisplayIndex == 3) {
@@ -257,7 +251,7 @@ namespace WordCounter {
 
 				OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
 				string url = "https://translate.yandex.ru/?lang=en-ru&text=" + o.Word;
-				url.Replace(" ", "%20");
+				url = url.Replace(" ", "%20");
 				infa.Browse(url);
 			}
 		} // /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -272,9 +266,10 @@ namespace WordCounter {
 			OutGridData o = (OutGridData)dtOut.SelectedItems[dtOut.SelectedItems.Count - 1];
 			ItemDists idsts = tp.lst[o.Word];
 			foreach(int pos in idsts.Positions) {
-				Point p = new Point();
-				p.X = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length;
-				p.Y = -6;
+				Point p = new Point {
+					X = lhor.X1 + (lhor.X2 - lhor.X1) * pos / sReadFiles.Length,
+					Y = -6
+				};
 				bind.PosLines.Add(p);
 			}
 		} // ///////////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +280,7 @@ namespace WordCounter {
 			//lhor.Y2 = lhor.Y1;
 			DtOut_SelectionChanged(sender, null);
 		} // /////////////////////////////////////////////////////////////////////////////////////
-		private void btExit_Click(object sender, RoutedEventArgs e) {
+		private void BtExit_Click(object sender, RoutedEventArgs e) {
 			int ret = db.Clear();
 			ret += tp.Clear();
 			ret += options.Clear();

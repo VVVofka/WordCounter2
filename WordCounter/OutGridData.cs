@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace WordCounter {
@@ -40,7 +41,7 @@ namespace WordCounter {
 		} // ///////////////////////////////////////////////////////////////////////////
 		public event PropertyChangedEventHandler PropertyChanged;
 		public void OnPropertyChanged([CallerMemberName]string prop = "") {
-			if (PropertyChanged != null)
+			if(PropertyChanged != null)
 				PropertyChanged(this, new PropertyChangedEventArgs(prop));
 		}
 	} // ********************************************************************************

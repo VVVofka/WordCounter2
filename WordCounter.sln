@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGGroupSortFilterExample", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37D8F126-D4D2-4AB6-8777-C7C31A1E6F7F}"
 	ProjectSection(SolutionItems) = preProject
-		DBWords.txt = DBWords.txt
+		.editorconfig = .editorconfig
 		WordCounter\bin\Debug\DBWords.txt = WordCounter\bin\Debug\DBWords.txt
 		IrregularVerb.txt = IrregularVerb.txt
 		IrregularVerb.xlsm = IrregularVerb.xlsm
