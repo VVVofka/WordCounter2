@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WordCounter;
 namespace WordCountTest {
 	[TestClass]
@@ -66,7 +65,7 @@ namespace WordCountTest {
 			dbr.Load(fname);
 			Assert.AreEqual(db.db.Count, 5, "Equal Len dict");
 			Assert.AreEqual(db.db.Count, dbr.db.Count, "Equal Len dict");
-			foreach (KeyValuePair<string, int> i in dbr.db) {
+			foreach(KeyValuePair<string, int> i in dbr.db) {
 				string key = i.Key;
 				Assert.AreEqual(i.Value, dbr.db[key], "Key: " + key);
 			}

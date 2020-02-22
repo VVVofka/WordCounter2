@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Shapes;
 
 namespace WordCounter {
 	class MyDataBind {
@@ -13,6 +7,10 @@ namespace WordCounter {
 		public ObservableCollection<Point> PosLines { get; private set; }
 		public MyDataBind() {
 			PosLines = new ObservableCollection<Point>();
+		} // //////////////////////////////////////////////////////////////////////////////////
+		public int Clear() {
+			PosLines.Clear();
+			return PosLines.Count;
 		} // //////////////////////////////////////////////////////////////////////////////////
 	}
 }

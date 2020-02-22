@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 // for sorting dictionary
 namespace WordCounter {
 	class CWordCount : IComparable<CWordCount> {
@@ -11,9 +7,9 @@ namespace WordCounter {
 		public int cnt;
 		private const int desc = -1;
 		public int CompareTo(CWordCount other) {
-			if (dists > other.dists)
+			if(dists > other.dists)
 				return desc;
-			if (dists < other.dists)
+			if(dists < other.dists)
 				return -desc;
 
 			//if (word.Length > other.word.Length)

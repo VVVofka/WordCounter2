@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace WordCounter {
 	/// <summary>
@@ -11,8 +8,8 @@ namespace WordCounter {
 	/// insert to Window_Loaded()
 	/// </summary>
 	public static class VVVindowSize {
-		public static void ReSize(Window wnd, double k_width, double k_heigh, double k_hoirz, double k_vert, Window wndowner=null) {
-			if (wndowner == null)
+		public static void ReSize(Window wnd, double k_width, double k_heigh, double k_hoirz, double k_vert, Window wndowner = null) {
+			if(wndowner == null)
 				wndowner = wnd;
 			Rectangle rmain = new Rectangle((int)wndowner.Left, (int)wndowner.Top, (int)wndowner.Width, (int)wndowner.Height);
 			Screen myScreen = Screen.FromRectangle(rmain);

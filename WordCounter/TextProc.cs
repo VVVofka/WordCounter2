@@ -13,38 +13,48 @@ namespace WordCounter {
 
 		public Dictionary<string, ItemDists> lst = new Dictionary<string, ItemDists>();
 		public bool irrVerb = true;
-		List<CWordCount> lstord = new List<CWordCount>();
+		readonly List<CWordCount> lstord = new List<CWordCount>();
 		public ObservableCollection<OutGridData> grdata;
-		private IrregularVerbs irr = new IrregularVerbs();
+		private readonly IrregularVerbs irr = new IrregularVerbs();
 		// //////////////////////////////////////////////////////////////////
+		public int Clear() {
+			int ret = 0;
+			lst.Clear();
+			ret += lst.Count;
+			lstord.Clear();
+			ret += lstord.Count;
+			grdata.Clear();
+			ret += grdata.Count;
+			ret += irr.Clear();
+			return ret;
+		} // /////////////////////////////////////////////////////////////////
 		public void Run(string inp_text) {
 			string buf = "";
 			lenText = +inp_text.Length;
-			for (int i = 0; i < lenText; i++) {
+			for(int i = 0; i < lenText; i++) {
 				char c = Char.ToLower(inp_text[i]);
-				if (Char.IsLetter(c) || c == '\'')
+				if(Char.IsLetter(c) || c == '\'')
 					buf += c;
 				else {
-					if (buf.Length != 0) {
-						if (buf.Length > 2)
-							run1(buf, i);
+					if(buf.Length != 0) {
+						if(buf.Length > 2)
+							Run1(buf, i);
 						buf = "";
 					}
 				}
 			} // for (int i = 0; i < lenText; i++)
-			if (buf.Length > 2) // for last word
-				run1(buf, lenText - 1);
+			if(buf.Length > 2) // for last word
+				Run1(buf, lenText - 1);
 			uniqMiddle = uniqWord;
 		} // ////////////// public void Run(string inp_text) ///////////////////////
-		private void run1(string s, int pos) {
-			ItemDists itdst;
-			if (irrVerb)
-				s = irr.getInfinitive(s);
+		private void Run1(string s, int pos) {
+			if(irrVerb)
+				s = irr.GetInfinitive(s);
 			allWord++;
 			allChars += s.Length;
-			if (lst.TryGetValue(s, out itdst)) {
+			if(lst.TryGetValue(s, out ItemDists itdst)) {
 				itdst.Add(pos); //lst[s] = cnt + 1;
-			} else if (s != "the" && s != "and" && s != "you") {
+			} else if(s != "the" && s != "and" && s != "you") {
 				itdst = new ItemDists(pos);
 				lst.Add(s, itdst);
 				uniqWord++;
@@ -52,191 +62,192 @@ namespace WordCounter {
 		} // //////////////////////////////////////////////////////////////////////
 		public void Sorting() {
 			lstord.Clear();
-			foreach (KeyValuePair<string, ItemDists> item in lst) {
-				CWordCount wc = new CWordCount();
-				wc.cnt = item.Value.Positions.Count;
-				wc.dists = item.Value.SumDists;
-				wc.word = item.Key;
+			foreach(KeyValuePair<string, ItemDists> item in lst) {
+				CWordCount wc = new CWordCount {
+					cnt = item.Value.Positions.Count,
+					dists = item.Value.SumDists,
+					word = item.Key
+				};
 				lstord.Add(wc);
 			}
-			if (lstord.Count > 0) {
+			if(lstord.Count > 0) {
 				lstord.Sort();
 				double mindist = lstord[lstord.Count - 1].dists;
 				double maxdist = lstord[0].dists;
-				foreach (CWordCount item in lstord) {
+				foreach(CWordCount item in lstord) {
 					item.dists = (mindist == maxdist) ? 0 : 99 * (item.dists - mindist) / (maxdist - mindist);
 				}
 			}
 		} // ///////////////////////////////////////////////////////////////////////
 		public WordCnt At(int pos) {
 			CWordCount wc = lstord[pos];
-			WordCnt ret = new WordCnt();
-			ret.word = wc.word;
-			ret.cnt = wc.cnt;
-			return ret;
+			return new WordCnt {
+				word = wc.word,
+				cnt = wc.cnt
+			};
 		} // /////////////////////////////////////////////////////////////////////
 		public void DelStart(string ex) {
 			Dictionary<string, ItemDists> keys4Add = new Dictionary<string, ItemDists>(); // keys for add 
 			List<string> keys4Del = new List<string>(); // keys for delete 
-			foreach (KeyValuePair<string, ItemDists> itemEx in lst) {
+			foreach(KeyValuePair<string, ItemDists> itemEx in lst) {
 				string s = itemEx.Key;
-				if (s.Length < ex.Length + 2)
+				if(s.Length < ex.Length + 2)
 					continue;
-				if (s.Substring(0, ex.Length) == ex) {
+				if(s.Substring(0, ex.Length) == ex) {
 					string sNoEx = s.Substring(ex.Length);
-					if (sNoEx.Length < 3)
+					if(sNoEx.Length < 3)
 						continue;
-					if (lst.ContainsKey(sNoEx)) {
+					if(lst.ContainsKey(sNoEx)) {
 						keys4Add.Add(sNoEx, itemEx.Value);
 						keys4Del.Add(s);
 					}
 				}
 			}
 			uniqMiddle -= keys4Del.Count;
-			foreach (KeyValuePair<string, ItemDists> p in keys4Add)
+			foreach(KeyValuePair<string, ItemDists> p in keys4Add)
 				lst[p.Key].Add(p.Value);
-			foreach (string keyDel in keys4Del)
+			foreach(string keyDel in keys4Del)
 				lst.Remove(keyDel);
 		} // /////////////// public void DelStart(string ex) /////////////////////////////
 		public void DelEnd(string ex) {
 			Dictionary<string, ItemDists> keys4Add = new Dictionary<string, ItemDists>(); // keys for add 
 			List<string> keys4Del = new List<string>(); // keys for delete 
-			foreach (KeyValuePair<string, ItemDists> itemEx in lst) {
+			foreach(KeyValuePair<string, ItemDists> itemEx in lst) {
 				string s = itemEx.Key;
-				if (s.Length < ex.Length + 2)
+				if(s.Length < ex.Length + 2)
 					continue;
 
-				if (s.Substring(s.Length - ex.Length, ex.Length) == ex) {
+				if(s.Substring(s.Length - ex.Length, ex.Length) == ex) {
 					string sNoEx = s.Substring(0, s.Length - ex.Length);
-					if (sNoEx.Length < 3)
+					if(sNoEx.Length < 3)
 						continue;
-					if (lst.ContainsKey(sNoEx)) {
+					if(lst.ContainsKey(sNoEx)) {
 						keys4Add.Add(sNoEx, itemEx.Value);
 						keys4Del.Add(s);
 					}
 				}
 			}
 			uniqMiddle -= keys4Del.Count;
-			foreach (KeyValuePair<string, ItemDists> i in keys4Add)
+			foreach(KeyValuePair<string, ItemDists> i in keys4Add)
 				lst[i.Key].Add(i.Value);
-			foreach (string keyDel in keys4Del)
+			foreach(string keyDel in keys4Del)
 				lst.Remove(keyDel);
 		} // /////////////// public void DelUn() /////////////////////////////
 		public void ReplEnd(string ex, string root_end) { //
 			Dictionary<string, ItemDists> keys4Add = new Dictionary<string, ItemDists>(); // keys for add 
 			List<string> keys4Del = new List<string>(); // keys for delete 
-			foreach (KeyValuePair<string, ItemDists> itemEx in lst) {
+			foreach(KeyValuePair<string, ItemDists> itemEx in lst) {
 				string s = itemEx.Key;
-				if (s.Length < ex.Length + 2)
+				if(s.Length < ex.Length + 2)
 					continue;
 
-				if (s.Substring(s.Length - ex.Length, ex.Length) == ex) {
+				if(s.Substring(s.Length - ex.Length, ex.Length) == ex) {
 					string sNoEx = s.Substring(0, s.Length - ex.Length);
-					if (sNoEx.Length < 3)
+					if(sNoEx.Length < 3)
 						continue;
-					if (lst.ContainsKey(sNoEx + root_end)) {
+					if(lst.ContainsKey(sNoEx + root_end)) {
 						keys4Add.Add(sNoEx + root_end, itemEx.Value);
 						keys4Del.Add(s);
 					}
 				}
 			}
 			uniqMiddle -= keys4Del.Count;
-			foreach (KeyValuePair<string, ItemDists> p in keys4Add)
+			foreach(KeyValuePair<string, ItemDists> p in keys4Add)
 				lst[p.Key].Add(p.Value);
-			foreach (string keyDel in keys4Del)
+			foreach(string keyDel in keys4Del)
 				lst.Remove(keyDel);
 		} // /////////////// public void DelUn() /////////////////////////////
 		public void ReplEnd2(string ex) { //
 			Dictionary<string, ItemDists> keys4Add = new Dictionary<string, ItemDists>(); // keys for add 
 			List<string> keys4Del = new List<string>(); // keys for delete 
-			foreach (KeyValuePair<string, ItemDists> itemEx in lst) {
+			foreach(KeyValuePair<string, ItemDists> itemEx in lst) {
 				string s = itemEx.Key;
-				if (s.Length < ex.Length + 2)
+				if(s.Length < ex.Length + 2)
 					continue;
 
-				if (s.Substring(s.Length - ex.Length, ex.Length) == ex) {
+				if(s.Substring(s.Length - ex.Length, ex.Length) == ex) {
 					string sNoEx = s.Substring(0, s.Length - ex.Length);
-					if (sNoEx.Length < 3)
+					if(sNoEx.Length < 3)
 						continue;
 					string s1 = sNoEx.Substring(sNoEx.Length - 2, 1);
 					string s2 = sNoEx.Substring(sNoEx.Length - 1, 1);
-					if (s1 != s2)
+					if(s1 != s2)
 						continue;
 					sNoEx = sNoEx.Substring(0, sNoEx.Length - 1);
-					if (lst.ContainsKey(sNoEx)) {
+					if(lst.ContainsKey(sNoEx)) {
 						keys4Add.Add(sNoEx, itemEx.Value);
 						keys4Del.Add(s);
 					}
 				}
 			}
 			uniqMiddle -= keys4Del.Count;
-			foreach (KeyValuePair<string, ItemDists> p in keys4Add)
+			foreach(KeyValuePair<string, ItemDists> p in keys4Add)
 				lst[p.Key].Add(p.Value);
-			foreach (string keyDel in keys4Del)
+			foreach(string keyDel in keys4Del)
 				lst.Remove(keyDel);
 		} // /////////////// public void DelUn() /////////////////////////////
-		public void report(Dictionary<string, int> dict_db, bool? know, bool? unknow, int min_cnt, string path = "") {
+		public void Report(Dictionary<string, int> dict_db, bool? know, bool? unknow, int min_cnt, string path = "") {
 			Sorting();
 			grdata = new ObservableCollection<OutGridData>();
 			int n = 0;
 			double sum = 0, min = 0, max = 0;
 			//for (int i = 0; i < lstord.Count; i++) {
-			foreach (CWordCount wc in lstord) {
+			foreach(CWordCount wc in lstord) {
 				//CWordCount wc = lstord[i];
 				sum += wc.cnt;
 				//int val = dict_db[wc.word];
 				bool bknow = false, bunknow = false, needAdd = true;
-				if (dict_db != null) {
-						n++;
-					if (dict_db.ContainsKey(wc.word)) {
+				if(dict_db != null) {
+					n++;
+					if(dict_db.ContainsKey(wc.word)) {
 						KnownUnknown.Pop(dict_db, wc.word, out bknow, out bunknow);
-						if (know == null && unknow == null) {
+						if(know == null && unknow == null) {
 							//needAdd = true;
-						} else if (know != null && unknow != null) {
+						} else if(know != null && unknow != null) {
 							needAdd = ((bunknow == unknow) && (bknow == know));
-						} else if (unknow != null && know == null) {
+						} else if(unknow != null && know == null) {
 							needAdd = (bunknow == unknow);
-						} else if (know != null && unknow == null)
+						} else if(know != null && unknow == null)
 							needAdd = (bknow == know);
 					}
 				}
-				if (needAdd) {
-					if (wc.dists < min)
+				if(needAdd) {
+					if(wc.dists < min)
 						min = wc.dists;
-					if (wc.dists > max)
+					if(wc.dists > max)
 						max = wc.dists;
 					// Не загружать, если количество менее
-					if (wc.cnt >= min_cnt)
+					if(wc.cnt >= min_cnt)
 						grdata.Add(new OutGridData(n, wc.cnt, wc.dists, wc.word, bknow, bunknow));
 				}
 			}
-			foreach (OutGridData grd in grdata) {
+			foreach(OutGridData grd in grdata) {
 				grd.Percent = (min == max) ? 0 : (double)(0.1 * (int)(1000 * (grd.Percent - min) / (max - min)));
 			}
 
-			if (path.Length == 0) {
-				for (int i = 0; i < lstord.Count; i++) {
+			if(path.Length == 0) {
+				for(int i = 0; i < lstord.Count; i++) {
 					CWordCount wc = lstord[i];
 					Console.WriteLine("{0} Cnt = {1}, Word = {2}, Dists = {3}",
 						i, wc.cnt, wc.word, wc.dists);
 				}
 			} else {
 				try {
-					if (File.Exists(path))
+					if(File.Exists(path))
 						File.Delete(path);
-					using (StreamWriter sw = File.CreateText(path)) {
+					using(StreamWriter sw = File.CreateText(path)) {
 						sw.WriteLine("N;Count;Word");
 						int sumf = 0;
-						for (int i = 0; i < lstord.Count; i++) {
+						for(int i = 0; i < lstord.Count; i++) {
 							CWordCount wc = lstord[i];
 							sumf += wc.cnt;
-							if (allWord > 0) {
+							if(allWord > 0) {
 								sw.WriteLine("{0};{1};{2};{3};{4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
 								//Console.WriteLine("{0} {1} {2} {3} {4}", i, (int)(100 * sum / allWord), wc.cnt, wc.word, wc.dists);
 							}
 						}
 					}
-				} catch (Exception ex) {
+				} catch(Exception ex) {
 					Console.WriteLine(ex.ToString());
 				}
 			}

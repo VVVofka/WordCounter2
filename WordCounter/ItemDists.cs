@@ -11,8 +11,8 @@ namespace WordCounter {
 		} // //////////////////////////////////////////////////////////////////////////////////
 		public void Add(int pos) {
 			double sum = 0;
-			foreach (int x in Positions) {
-				if (x == pos)
+			foreach(int x in Positions) {
+				if(x == pos)
 					return;
 				double tmp = x - pos;
 				sum += Math.Abs(tmp); // * tmp;
@@ -21,7 +21,7 @@ namespace WordCounter {
 			Positions.Add(pos);
 		} // /////////////////////////////////////////////////////////////////////////////
 		public void Add(ItemDists add_item) {
-			foreach (int y in add_item.Positions)
+			foreach(int y in add_item.Positions)
 				Add(y);
 		} // /////////////////////////////////////////////////////////////////////////////
 	} // ****************************************************************************************

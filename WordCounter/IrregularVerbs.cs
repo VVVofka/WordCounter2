@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WordCounter {
 	class IrregularVerbs {
@@ -12,15 +10,19 @@ namespace WordCounter {
 		public IrregularVerbs() {
 			Load(fname);
 		} // /////////////////////////////////////////////////////////////////////////////
+		public int Clear() {
+			db.Clear();
+			return db.Count;
+		} // //////////////////////////////////////////////////////////////////////////////
 		private void Load(string fname) {
 			string dbfname = fname;
-			if (!File.Exists(dbfname)) {
+			if(!File.Exists(dbfname)) {
 				dbfname = @"..\" + dbfname;
-				if (!File.Exists(dbfname)) {
+				if(!File.Exists(dbfname)) {
 					dbfname = @"..\" + dbfname;
-					if (!File.Exists(dbfname)) {
+					if(!File.Exists(dbfname)) {
 						dbfname = @"..\" + dbfname;
-						if (!File.Exists(dbfname)) {
+						if(!File.Exists(dbfname)) {
 							Console.WriteLine("No IrregularVerbs file '" + fname + "' !");
 							return;
 						}
@@ -28,21 +30,23 @@ namespace WordCounter {
 				}
 			}
 			db = new Dictionary<string, string>();
-			using (StreamReader sr = new StreamReader(dbfname, Encoding.Default)) {
+			using(StreamReader sr = new StreamReader(dbfname, Encoding.Default)) {
 				string key, val;
-				for (; ; ) {
+				for(; ; ) {
 					val = sr.ReadLine();
-					if (val == null)
+					if(val == null)
 						break;
 					key = sr.ReadLine();
-					if (key == null)
+					if(key == null)
 						break;
 					db.Add(key, val);
 				}
+				//sr.Close();
+				sr.Dispose();
 			}
 		} // ///////////////////////////////////////////////////////////////////////////////
-		public string getInfinitive(string s) {
-			if (db.ContainsKey(s))
+		public string GetInfinitive(string s) {
+			if(db.ContainsKey(s))
 				return db[s];
 			return s;
 		} // ////////////////////////////////////////////////////////////////////////////////
