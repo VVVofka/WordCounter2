@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCounter", "WordCounter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCountTest", "WordCountTest\WordCountTest.csproj", "{CBA76207-A451-4BB4-B28B-5E073FC1A260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGGroupSortFilterExample", "..\..\DGGroupSortFilterExample\DGGroupSortFilterExample.csproj", "{0A6ABEF3-0405-48B2-8ED4-E0AA1E4EE01F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37D8F126-D4D2-4AB6-8777-C7C31A1E6F7F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -32,10 +30,6 @@ Global
 		{CBA76207-A451-4BB4-B28B-5E073FC1A260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA76207-A451-4BB4-B28B-5E073FC1A260}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA76207-A451-4BB4-B28B-5E073FC1A260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A6ABEF3-0405-48B2-8ED4-E0AA1E4EE01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A6ABEF3-0405-48B2-8ED4-E0AA1E4EE01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A6ABEF3-0405-48B2-8ED4-E0AA1E4EE01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A6ABEF3-0405-48B2-8ED4-E0AA1E4EE01F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
