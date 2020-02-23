@@ -78,6 +78,7 @@
 0adrenaline
 0adrift
 1advance
+1advanced
 1advantage
 1adventure
 1adventurers
@@ -109,12 +110,14 @@
 0aggressive
 0aging
 1ago
+1agony
 1agree
 1agreed
 0agreement
 0aha
 1ahead
 3aid
+1aim
 0aimed
 1ain't
 1air
@@ -152,7 +155,9 @@
 1amazement
 1amazing
 0ambition
+2ambush
 0amby
+1ammunition
 1amnesia
 0amoeba
 1among
@@ -192,6 +197,7 @@
 1antimatter
 0antiproton
 0antiques
+1antitoxin
 0anxiety
 1anxious
 1any
@@ -205,10 +211,13 @@
 1anywhere
 1apart
 2apartment
+0apelike
+1apella
 0apparent
 1apparently
 1appear
 1appearance
+0appeared
 0appears
 0appease
 0appetite
@@ -249,7 +258,7 @@
 1arose
 1around
 0aroused
-0arrange
+1arrange
 1arrangement
 0array
 1arrest
@@ -259,6 +268,7 @@
 1arrived
 0arrives
 1arrow
+1arrows
 1art
 1artefact
 0arthritis
@@ -267,6 +277,7 @@
 0ash
 0ashamed
 0ashore
+1asian
 0aside
 1ask
 0asked
@@ -378,7 +389,7 @@
 1barbaric
 0bardoli
 2bare
-0barely
+1barely
 0bargain
 0bark
 0barn
@@ -433,6 +444,7 @@
 0begging
 1begin
 0beginner
+1beginning
 1beginnings
 1begun
 0behalf
@@ -569,6 +581,7 @@
 0bot
 0botched
 1both
+0bothering
 0bothersome
 1bottle
 1bottom
@@ -580,6 +593,7 @@
 0bout
 1bow
 0bowl
+1bows
 1box
 1boy
 1boys
@@ -593,6 +607,7 @@
 0brainwave
 0bran
 1branch
+0brash
 1brave
 0bravery
 0bread
@@ -605,6 +620,7 @@
 1breath
 1breathe
 0breeches
+0breechloaders
 0breed
 0breeze
 0briar
@@ -686,9 +702,9 @@
 0cabinet
 0cabs
 0cackle
-0cafÃƒÂÃ‚Â Ãƒâ€šÃ‚Â ÃƒÂÃ¢â‚¬â„¢Ãƒâ€šÃ‚Â ÃƒÂÃ‚Â ÃƒÂÃ¢â‚¬Â ÃƒÂÃ‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÂÃ‚Â¡Ãƒâ€˜Ã¢â€žÂ¢ÃƒÂÃ‚Â Ãƒâ€šÃ‚Â ÃƒÂÃ‚Â²ÃƒÂÃ¢â‚¬Å¡ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÂÃ‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂÃ¢â‚¬â„¢Ãƒâ€šÃ‚Â©
-1cafÃƒÂÃ¢â‚¬Å“Ãƒâ€šÃ‚Â©
-1cafÃƒÆ’Ã‚Â©
+1cafÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
+1cafÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
+0cafÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â²ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
 1cage
 1cake
 0cal
@@ -700,7 +716,7 @@
 0calves
 1came
 0camouflaged
-0camp
+1camp
 1can
 1canaris
 0candelabra
@@ -727,11 +743,13 @@
 0capture
 1car
 0carbohydrate
+0carbon
 1card
 1care
 1careful
 0carelessness
 0carinae
+0carnivore
 0carolina
 1carpet
 0carried
@@ -780,6 +798,7 @@
 0cept
 1ceremony
 1certain
+1certainly
 1certainty
 0certify
 1chain
@@ -841,6 +860,7 @@
 0chorus
 1chose
 1christine
+1chrome
 1chromosome
 0chubby
 0chuckle
@@ -863,7 +883,7 @@
 1city
 0civ
 1civil
-0civilisations
+1civilisations
 1civilizations
 0civilized
 0clad
@@ -920,6 +940,7 @@
 0cohesion
 0cohesive
 0coil
+0coincidence
 1cold
 0collapsed
 1collar
@@ -969,6 +990,7 @@
 1compared
 0compares
 0compassion
+0compassionate
 0compel
 0compensate
 0competency
@@ -982,10 +1004,12 @@
 1complex
 0complexion
 0complicated
+0compliment
 0compliments
 1composed
 1composition
 0compound
+0compounds
 0comprehend
 2compulsory
 0computations
@@ -1030,7 +1054,9 @@
 0confusing
 0confusion
 0congratulate
+0congratulations
 0congruent
+0conn
 0connect
 1connected
 1conquer
@@ -1066,6 +1092,7 @@
 2contamination
 2content
 0contentedly
+0continent
 0continually
 0continuation
 1continue
@@ -1103,6 +1130,7 @@
 0cop
 1copper
 0cor
+0coranalin
 0corbomite
 0cordially
 0cordrazine
@@ -1118,6 +1146,7 @@
 0cosmic
 1cost
 2costume
+0costumes
 2cottage
 1cotton
 0couch
@@ -1224,6 +1253,7 @@
 0curtsy
 0cushions
 0custard
+1custom
 0customary
 1customs
 1cut
@@ -1233,6 +1263,7 @@
 1cyclone
 0cygnian
 1dad
+0daft
 0daily
 2dainty
 0dairy
@@ -1276,6 +1307,7 @@
 1dealer's
 1dear
 1death
+0debate
 2debris
 0deceive
 0decency
@@ -1286,6 +1318,7 @@
 0decisions
 1deck
 0decker
+0decks
 1declare
 0decline
 0declined
@@ -1384,7 +1417,7 @@
 3deuce
 1develop
 0developed
-0development
+1development
 1deviation
 1device
 1devices
@@ -1435,6 +1468,7 @@
 1directive
 1directly
 0director
+0dirtiest
 0dis
 1disabled
 0disagreeable
@@ -1496,7 +1530,9 @@
 0ditch
 3divert
 0diverted
+0divide
 0divided
+1division
 0dizzy
 0dna
 1do
@@ -1568,7 +1604,7 @@
 0dropping
 1drove
 0drown
-0drugged
+3drugged
 1drugs
 0dry
 0ducking
@@ -1608,6 +1644,7 @@
 1eat
 1echoed
 0eddies
+1eden
 1edge
 1educated
 0education
@@ -1626,6 +1663,7 @@
 0elaine
 0elbow
 0eldest
+0elected
 0electric
 1electrical
 1electricity
@@ -1716,6 +1754,7 @@
 0eons
 0epitaph
 1epsilon
+0equalize
 1equip
 1equipment
 0equipped
@@ -1730,6 +1769,7 @@
 0ert
 0escalator
 1escape
+0escaped
 1escort
 1especially
 0espied
@@ -1803,7 +1843,7 @@
 0exhaust
 0exhausted
 1exhausting
-0exhibit
+3exhibit
 1exist
 1existence
 0exit
@@ -1833,6 +1873,7 @@
 0expressed
 0expresses
 1expression
+0expressly
 0exquisitely
 1extend
 0extensively
@@ -1844,6 +1885,7 @@
 1extrapolate
 1extreme
 1extremely
+0extremes
 1eye
 0eyed
 0eyes
@@ -1874,6 +1916,7 @@
 0fairness
 0fairy
 1fairyland
+0faith
 0faithful
 1fall
 0falling
@@ -1885,6 +1928,7 @@
 1famous
 1fan
 1fancy
+0fangs
 1fantastic
 0fantasy
 1far
@@ -1968,9 +2012,12 @@
 1finish
 1finished
 1fire
+3firearm
 0firearms
 0fired
 0fireplug
+0fires
+1firestick
 1firm
 0firmer
 1first
@@ -1997,6 +2044,7 @@
 1flesh
 1flew
 1flight
+2flintlock
 0flit
 1fliver
 1float
@@ -2007,6 +2055,7 @@
 2flop
 1flow
 0flows
+0fluctuate
 0fluctuated
 0fluid
 0flung
@@ -2036,6 +2085,7 @@
 0footstool
 1for
 0forbear
+0forbid
 1force
 1forced
 2forceful
@@ -2048,6 +2098,7 @@
 1forever
 0forfeit
 0forgave
+2forge
 0forges
 1forget
 1forgive
@@ -2123,8 +2174,10 @@
 0funniest
 0funny
 0furious
+0furnace
 0furnaces
 0furnish
+0furnishing
 0furniture
 1further
 0furthermost
@@ -2190,6 +2243,7 @@
 1gentle
 1gentleman
 1gentlemen
+0gently
 0genuine
 0ger
 0germ
@@ -2247,6 +2301,7 @@
 0gotten
 0govern
 1government
+0governor
 2gown
 2grabbed
 1graceful
@@ -2295,6 +2350,7 @@
 0grindstone
 0grinning
 2groan
+0groove
 1ground
 0grounds
 1group
@@ -2311,6 +2367,7 @@
 1guard
 0guardian
 1guess
+0guessed
 1guest
 1guests
 1guide
@@ -2319,7 +2376,7 @@
 0guinea
 0gulf
 1gun
-0gunpowder
+1gunpowder
 0gurgle
 1guy
 0hab
@@ -2382,7 +2439,7 @@
 0hauled
 1have
 0haven
-0haven't
+1haven't
 0hay
 0hazardous
 0hazel
@@ -2390,6 +2447,7 @@
 1heading
 0headlong
 0headway
+3heal
 0healing
 1health
 0healthy
@@ -2400,11 +2458,12 @@
 1heart
 0heartaches
 0hearts
+1heart's
 1heat
 1heater
 0heaven
 1heavy
-0he'd
+1he'd
 1hedford
 0hedonistic
 0heedless
@@ -2425,6 +2484,7 @@
 1hen
 1hengist
 1her
+0herbs
 1here
 0hereafter
 0hereditary
@@ -2474,6 +2534,7 @@
 1holiday
 1hollow
 1home
+0homemade
 0hon
 0honest
 1honey
@@ -2520,6 +2581,7 @@
 1human
 0humanoid
 0humanoids
+1humans
 0humble
 1humbug
 0humdrum
@@ -2558,6 +2620,7 @@
 0ies
 1ifs
 0ign
+0ignites
 0ignition
 0ignore
 1iii
@@ -2599,6 +2662,7 @@
 0imprison
 0imprisonment
 0improbable
+2improvement
 0improvements
 0impudent
 1impulse
@@ -2636,6 +2700,7 @@
 0indignant
 0indispensable
 1individual
+0induced
 0industrialisation
 0industrious
 0ineffective
@@ -2663,7 +2728,7 @@
 1initiate
 0initiated
 2injure
-0injured
+1injured
 0injuries
 3injury
 0inky
@@ -2707,19 +2772,22 @@
 1interest
 1interested
 1interesting
+1interfere
 3interference
 1interfering
 0interior
 1internal
+0interned
 1interrupting
 1intersection
-0interstellar
+3interstellar
 1interview
 1into
 0intravenously
 2intrepid
 1introduce
 0introduction
+0intruders
 0intuition
 1invading
 0invalid
@@ -2738,6 +2806,7 @@
 0invitation
 1invite
 1inviting
+0involved
 0involving
 1ionized
 0iotia
@@ -2794,6 +2863,7 @@
 0joggled
 0johnson
 1join
+1joined
 0joints
 0jojo
 1joke
@@ -2821,6 +2891,7 @@
 0jury
 1just
 2justice
+1kahn
 0kak
 0kalidahs
 1kalo
@@ -2935,6 +3006,7 @@
 0legal
 1legend
 0legends
+0legitimate
 0leisure
 0lemonade
 0lend
@@ -2966,6 +3038,7 @@
 1lift
 1light
 1lightning
+0lights
 1like
 1likewise
 0limbs
@@ -2996,6 +3069,7 @@
 0loaded
 0loaves
 0lobster
+1local
 0locale
 1locally
 1locate
@@ -3048,6 +3122,7 @@
 0machine's
 1mad
 1made
+1madness
 0mag
 1magic
 1magical
@@ -3059,6 +3134,7 @@
 1magnificent
 1magnified
 0magnitude
+1mahko
 2maid
 0maidens
 1mail
@@ -3085,6 +3161,7 @@
 0manhood
 0manifestations
 0manifestly
+0mankind
 1manner
 0manoeuvrable
 0manoeuvre
@@ -3114,6 +3191,7 @@
 0masada
 1mask
 1mass
+3massacre
 1massive
 0mast
 0mat
@@ -3130,6 +3208,7 @@
 1may
 1maybe
 0mayhap
+1m'benga
 1mccoy
 0meadow
 1meal
@@ -3147,6 +3226,7 @@
 0medals
 1medical
 1medicine
+1medics
 1meditate
 0meek
 1meet
@@ -3215,6 +3295,7 @@
 1mischief
 0mischievous
 1miserable
+0misfires
 0misfortune
 0mishap
 0mislead
@@ -3263,7 +3344,8 @@
 1more
 1morla
 1morn
-0morning
+1morning
+0morsel
 1mortals
 0mosaics
 0moss
@@ -3292,6 +3374,7 @@
 0mstances
 1much
 0mud
+1mugato
 0mule
 0multiple
 0mumbo
@@ -3316,6 +3399,7 @@
 0nacks
 0nails
 1name
+1named
 0nanda
 0napkins
 2narrow
@@ -3333,6 +3417,7 @@
 0neat
 0nebula
 0nec
+1necessarily
 1necessary
 0necessity
 1neck
@@ -3382,6 +3467,7 @@
 1noise
 1nome
 1non
+1nona
 1none
 0nonessential
 0nonetheless
@@ -3499,6 +3585,7 @@
 1organic
 0organisation
 1organism
+1organs
 0oriental
 1origin
 0orn
@@ -3551,6 +3638,7 @@
 0ozzy
 0pace
 0pack
+0packet
 0padded
 1page
 1paid
@@ -3562,7 +3650,9 @@
 1pal
 1palace
 0pale
+0palm
 0palmer
+2pan
 0pancakes
 0pane
 0panel
@@ -3596,6 +3686,7 @@
 0pathway
 0patient
 0patiently
+0patients
 0pattering
 1pattern
 0patterned
@@ -3679,6 +3770,7 @@
 0physicist
 1physio
 1physiological
+0physiology
 0physique
 0pic
 1pick
@@ -3717,7 +3809,7 @@
 1planetary
 0planetoid
 0plank
-0plant
+1plant
 1plants
 1plate
 1platform
@@ -3734,6 +3826,7 @@
 1please
 0pleasurable
 1pleasure
+0pleasures
 0pleat
 1plenty
 0plet
@@ -3829,6 +3922,7 @@
 1present
 0presentable
 0preserve
+0preserves
 1president
 0presiding
 1press
@@ -3850,11 +3944,13 @@
 0prim
 1primary
 0prime
+0priming
 0primitive
 1prince
 0princesses
 0principles
 0printing
+1prints
 1priority
 0pris
 1prison
@@ -3888,7 +3984,9 @@
 1programme
 1programmed
 1progress
+0progressed
 0projected
+0projectile
 0projecting
 0prolong
 1promise
@@ -3979,6 +4077,7 @@
 1quickly
 1quiet
 1quite
+0quo
 0quote
 0quoth
 1race
@@ -4038,6 +4137,7 @@
 0realise
 1reality
 1realize
+1really
 0realm
 0rear
 1reason
@@ -4047,6 +4147,7 @@
 0recall
 1receive
 1received
+1receives
 1recent
 0recently
 1reception
@@ -4060,9 +4161,11 @@
 1recommend
 0recommendation
 1recommendations
+1recommended
 0reconnaissance
 0recontaminate
 1record
+1recorder
 1recording
 1recovered
 0recovery
@@ -4087,6 +4190,7 @@
 0refuge
 0refusal
 1refuse
+0regain
 0regained
 0regard
 0regarding
@@ -4131,7 +4235,8 @@
 1remains
 1remark
 0remarkable
-0remarkably
+1remarkably
+0remedies
 0remedy
 0remem
 1remember
@@ -4153,9 +4258,11 @@
 0repeated
 1rephrase
 1replace
+0replacements
 0replayed
 1reply
 1report
+1reports
 0represent
 0representing
 0repress
@@ -4165,6 +4272,7 @@
 1reproductive
 0reprovingly
 1request
+0requested
 0requesting
 1require
 1required
@@ -4230,6 +4338,7 @@
 1reversed
 0reversing
 0revisit
+0rewards
 0rewound
 0rhinoceros
 1ribbon
@@ -4239,6 +4348,7 @@
 1ride
 0ridge
 3ridiculous
+0rifled
 0rig
 1rigel
 0rigging
@@ -4270,14 +4380,17 @@
 1robot
 1rock
 0rocketty
+0rod
 1rode
 0rogue
 1roll
+0rolled
 0roman
 1romulan
 1roof
 1room
 0roost
+1root
 0roots
 0rope
 0roquat
@@ -4394,7 +4507,7 @@
 1scream
 0screeching
 1screen
-0screens
+1screens
 1screw
 0scrupulously
 1sea
@@ -4416,16 +4529,18 @@
 1sector
 1secure
 0secured
-0securely
+1securely
 1security
 1sedative
 1see
 1seek
 1seem
+1seemed
 0seemingly
 1seen
 0seize
 0seized
+0seldom
 1select
 0selection
 0selects
@@ -4434,6 +4549,7 @@
 1semi
 0semiconscious
 1send
+1sending
 0senility
 1senior
 0sensation
@@ -4452,6 +4568,7 @@
 1serial
 1series
 1serious
+1serpent
 0serum
 0serv
 1servant
@@ -4569,6 +4686,7 @@
 1singular
 0sinking
 1sir
+1sister
 0sisters
 1sit
 0site
@@ -4581,6 +4699,7 @@
 1skill
 0skimmed
 1skin
+1skins
 0skirting
 0skirts
 0skull
@@ -4631,11 +4750,14 @@
 0sniff
 0snug
 0sob
+0sober
+1social
 0sociate
 1society
 1sociological
 1soft
 0soggy
+3soil
 0sol
 1solar
 0sold
@@ -4665,6 +4787,7 @@
 0sonic
 1sonny
 1soon
+0soothing
 0sophisticated
 1sor
 1sorceress
@@ -4694,6 +4817,7 @@
 1speak
 0speaking
 0spear
+1spears
 1special
 0specialist
 1species
@@ -4740,6 +4864,7 @@
 0spooky
 1spot
 1spots
+1spotted
 1sprang
 0sprawling
 0spray
@@ -4804,12 +4929,13 @@
 0steak
 0steal
 0steed
-0steel
+1steel
 1steep
 0steeples
 0stem
 1step
 1stereotyped
+1sterilite
 2stern
 1steward
 1stick
@@ -4841,10 +4967,12 @@
 1story
 2stout
 1straight
+1straighter
 0straightway
 0strain
 0strained
 1strange
+1strangeness
 1strangers
 1strangest
 1strap
@@ -4855,7 +4983,7 @@
 1stream
 1street
 0streetlights
-0strength
+3strength
 0strengthen
 1stress
 0stretch
@@ -4881,6 +5009,7 @@
 0stubbornness
 2stuck
 1studded
+1studied
 1study
 1stuff
 0stumbling
@@ -4915,12 +5044,14 @@
 0suffocate
 1sugar
 1suggest
+1suggested
 0suggestion
 0suicide
 1suit
 0suitable
 0suited
 0sulkily
+1sulphur
 1sulu
 1summon
 1sun
@@ -4929,9 +5060,9 @@
 1sunset
 1sunshine
 0sup
-0superior
+1superior
 0supernova
-0superstition
+3superstition
 0superstitions
 0supper
 0supplied
@@ -5108,6 +5239,7 @@
 0thicker
 0thicknesses
 1thin
+2thine
 1thing
 1think
 0thinner
@@ -5169,6 +5301,7 @@
 0tiresome
 0tis
 1'tis
+0tissue
 1title
 0tle
 0tly
@@ -5221,6 +5354,7 @@
 0tracking
 1tractor
 1tracy
+0trading
 0tradition
 0trail
 0trailing
@@ -5231,6 +5365,7 @@
 0traitorous
 0tramping
 0trance
+0tranquil
 0tranquilize
 0trans
 1transcendental
@@ -5248,6 +5383,7 @@
 1transport
 0transported
 1transporter
+1transporting
 0transtator
 1trap
 1travel
@@ -5260,17 +5396,21 @@
 1treasury
 2treat
 0treatment
-0treaty
+0treats
+2treaty
 1tree
 2tremble
 0tremendous
 0tribe
 1trick
+0tricked
+0trickiest
 0tricky
 1tricorder
 1tried
 0tries
 0trifle
+1trigger
 0trimmed
 1trip
 1tritanium
@@ -5318,6 +5458,7 @@
 0tycho
 1type
 1types
+1tyree
 1ugly
 1uhura
 0ultimate
@@ -5454,13 +5595,15 @@
 0vibration
 0viciously
 1victim
-0victory
+1victory
 1view
 1viewing
 0viewscreen
 1vii
 1village
+1villagers
 0villain
+0violate
 0violated
 0violating
 1violence
@@ -5474,6 +5617,7 @@
 1visitor
 1visual
 0vital
+1vitalizer
 0vitamins
 1vocal
 1voice
@@ -5498,6 +5642,7 @@
 0wak
 1wake
 1walk
+1walking
 1wall
 1wallace
 0wallow
@@ -5630,6 +5775,7 @@
 0wins
 0wipe
 1wire
+1wisdom
 1wise
 0wisest
 1wish
@@ -5673,7 +5819,7 @@
 1world
 1worlds
 1worn
-0worried
+1worried
 1worry
 1worse
 1worst
@@ -5683,6 +5829,7 @@
 1wouldn't
 2wound
 1wow
+1wrap
 0wrapped
 0wreathes
 0wreck
@@ -5721,6 +5868,7 @@
 1yourselves
 1youth
 1you've
+1yutan
 1zabo
 0zactly
 1zefram
