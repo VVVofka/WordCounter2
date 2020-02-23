@@ -28,15 +28,18 @@ namespace WordCounter {
 			bind = new MyDataBind();
 			this.DataContext = bind;
 
-			dlg = new OpenFileDialog {
-				Multiselect = true,
-				DefaultExt = ".txt", // Default file extension
-				Filter = "Text documents (.txt)|*.txt|(.srt)|*.srt|All|*.*" // Filter files by extension
-			};
 			Control[] ctrls = new Control[] { chKnown, chUnknown, lstFileNames, txFileName, chzUn, chz_s, chz_ed, chz_ing, chz_en, chz_est, chz_ly, chz_er, chz_y, chz_less, chz_IrVerb, txMinCnt };
 			options = new OptionsReg(this, ctrls);
+			string defext = options.getReg("DefaultExt", ".srt");
+			//defext = defext.Replace(".", "");
+			//options.setReg("DefaultExtIndex", dlg.FilterIndex);
+			dlg = new OpenFileDialog {
+				Multiselect = true,
+				DefaultExt = defext, // Default file extension
+				Filter = "Texts|*.txt|Subtitles|*.srt|All|*.*", // Filter files by extension
+				FilterIndex = options.getRegInt("DefaultExtIndex", 1)
+		};
 			db.Load();
-
 			/*grid1.Children.Add(lhor);
 						*/
 			//Grid.SetRow(lhor, 1);
@@ -51,6 +54,11 @@ namespace WordCounter {
 					lstFileNames.Items.Clear();
 					foreach(string curfile in dlg.FileNames) {
 						lstFileNames.Items.Add(curfile);
+						string s = Path.GetExtension(curfile);
+						//s = s.Replace(".", "");
+						dlg.DefaultExt = s;
+						options.setReg("DefaultExt", s);
+						options.setReg("DefaultExtIndex", dlg.FilterIndex);
 					}
 					lstFileNames.SelectedIndex = 0;
 					txFileName.Text = "Добавлено " + lstFileNames.Items.Count + " файлов";
@@ -175,7 +183,7 @@ namespace WordCounter {
 				Window owner = ((bool)true ? this : null);
 				var messageBoxText = "DB not saved! Save?";
 				var caption = "Confirm";
-				var button = (MessageBoxButton)Enum.Parse(typeof(MessageBoxButton), "YesNo");
+				var button = (MessageBoxButton)Enum.Parse(typeof(MessageBoxButton), "YesNoCancel");
 				var icon = (MessageBoxImage)Enum.Parse(typeof(MessageBoxImage), "Question");
 				var defaultResult = (MessageBoxResult)Enum.Parse(typeof(MessageBoxResult), "Yes");
 				var options = (MessageBoxOptions)Enum.Parse(typeof(MessageBoxOptions), "None");
@@ -191,6 +199,9 @@ namespace WordCounter {
 				if(result == MessageBoxResult.Yes) {
 					btSaveDB.Focus();
 					BtSaveDB_Click(null, null);
+				}else if(result == MessageBoxResult.Cancel) {
+					e.Cancel = true;
+					return;
 				}
 			}
 			options.SaveAll();

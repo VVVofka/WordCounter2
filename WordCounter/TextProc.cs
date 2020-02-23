@@ -23,8 +23,10 @@ namespace WordCounter {
 			ret += lst.Count;
 			lstord.Clear();
 			ret += lstord.Count;
-			grdata.Clear();
-			ret += grdata.Count;
+			if(grdata != null) {
+				grdata.Clear();
+				ret += grdata.Count;
+			}
 			ret += irr.Clear();
 			return ret;
 		} // /////////////////////////////////////////////////////////////////
